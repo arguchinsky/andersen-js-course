@@ -37,7 +37,7 @@ import { any } from './array-practice/task1';
 import { arrayDiff } from './array-practice/task2';
 import { forEachRight } from './array-practice/task3';
 import { union } from './array-practice/task4';
-//import { createGenerator } from './array-practice/task5';
+import { createGenerator } from './array-practice/task5';
 import { transformArrayToNumber } from './array-practice/task6';
 import { take } from './array-practice/task7';
 import { without } from './array-practice/task8';
@@ -151,13 +151,14 @@ console.log('======  task 4 end  =======');
 
 console.log('====== task 5 start =======');
 
-// const generator = createGenerator([1, '6', 3, 2]);
-// generator.next(); // 1
-// generator.next(); // '6'
-// generator.next(); // 3
-// generator.next(); // 2
-// generator.next(); // 'Complete!'
-// generator.next(); // 'Complete!'
+const generator = createGenerator([1, '6', 3, 2]);
+
+console.log(generator.next()); // 1
+console.log(generator.next()); // '6'
+console.log(generator.next()); // 3
+console.log(generator.next()); // 2
+console.log(generator.next()); // 'Complete!'
+console.log(generator.next()); // 'Complete!'
 
 console.log('======  task 5 end  =======');
 
