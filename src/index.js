@@ -26,13 +26,13 @@ import { task7Old, task7New } from './es-features/task7';
 import { task8Old, task8New } from './es-features/task8';
 import { task9Old, task9New } from './es-features/task9';
 import { task10Old, task10New } from './es-features/task10';
-// import { task11Old, task11New } from './es-features/task11';
+import { task11Old, task11New } from './es-features/task11';
 // import { task12Old, task12New } from './es-features/task12';
 import { task13Old, task13New } from './es-features/task13';
 import { task14Old, task14New } from './es-features/task14';
 import { task15Old, task15New } from './es-features/task15';
 
-//array-practice
+// array-practice
 import { any } from './array-practice/task1';
 import { arrayDiff } from './array-practice/task2';
 import { forEachRight } from './array-practice/task3';
@@ -94,8 +94,8 @@ console.log('task10 new', task10New()); // {name: 'Max', age: 12, color: red}
 
 // console.log('=============');
 
-// console.log('task11 old', task11Old({a: null}, 'a')); // false
-// console.log('task11 new', task11New({a: null}, 'a')); // false
+// console.log('task11 old', task11Old({ a: null }, 'a')); // false
+// console.log('task11 new', task11New({ a: null }, 'a')); // false
 
 // console.log('=============');
 
@@ -114,8 +114,20 @@ console.log('task14 new', task14New({ a: 10, b: 55, c: 3 })); // [["a", 10], ["b
 
 console.log('=============');
 
-console.log('task15 old', task15Old([['a', 1], ['b', 2]])); // {a: 1, b: 2}
-console.log('task15 new', task15New([['a', 1], ['b', 2]])); // {a: 1, b: 2}
+console.log(
+  'task15 old',
+  task15Old([
+    ['a', 1],
+    ['b', 2],
+  ])
+); // {a: 1, b: 2}
+console.log(
+  'task15 new',
+  task15New([
+    ['a', 1],
+    ['b', 2],
+  ])
+); // {a: 1, b: 2}
 
 console.log('=============');
 
