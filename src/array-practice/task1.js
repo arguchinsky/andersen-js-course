@@ -12,5 +12,9 @@
  *
  * console.log(any([0, 1, 2, 0], x => x >= 2)); -> true
  * console.log(any([0, 0, 1, 0])); -> true
- * console.log(any([0, 0, 0, 0])); -> false
+ * console.log(any([0, 0, 0, 0], x => x >= 2))); -> false
  */
+
+export function any (array, func = () => true) {
+  return array.some(func);
+}

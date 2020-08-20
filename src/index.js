@@ -32,6 +32,9 @@ import { task13Old, task13New } from './es-features/task13';
 import { task14Old, task14New } from './es-features/task14';
 import { task15Old, task15New } from './es-features/task15';
 
+//array-practice
+import { any } from './array-practice/task1';
+
 console.log('task1 old', task1Old(10) === 500); // true
 console.log('task1 new', task1New(10) === 500); // true
 
@@ -106,3 +109,38 @@ console.log('task15 old', task15Old([['a', 1], ['b', 2]])); // {a: 1, b: 2}
 console.log('task15 new', task15New([['a', 1], ['b', 2]])); // {a: 1, b: 2}
 
 console.log('=============');
+
+console.log('====== array-practice =======');
+
+console.log('====== task 1 start =======');
+console.log(any([0, 1, 2, 0], x => x >= 2)); // true
+console.log(any([0, 0, 1, 0])); // true
+console.log(any([0, 0, 0, 0], x => x >= 2)); // false
+console.log('======  task 1 end  =======');
+console.log('====== task 2 start =======');
+
+console.log('======  task 2 end  =======');
+console.log('====== task 3 start =======');
+
+console.log('======  task 3 end  =======');
+console.log('====== task 4 start =======');
+
+console.log('======  task 4 end  =======');
+console.log('====== task 5 start =======');
+
+console.log('======  task 5 end  =======');
+console.log('====== task 6 start =======');
+
+console.log('======  task 6 end  =======');
+console.log('====== task 7 start =======');
+
+console.log('======  task 7 end  =======');
+console.log('====== task 8 start =======');
+
+console.log('======  task 8 end  =======');
+console.log('====== task 9 start =======');
+
+console.log('======  task 9 end  =======');
+console.log('====== task 10 start =======');
+
+console.log('======  task 10 end  =======');
