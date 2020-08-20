@@ -26,7 +26,7 @@ import { task7Old, task7New } from './es-features/task7';
 import { task8Old, task8New } from './es-features/task8';
 import { task9Old, task9New } from './es-features/task9';
 import { task10Old, task10New } from './es-features/task10';
-import { task11Old, task11New } from './es-features/task11';
+// import { task11Old, task11New } from './es-features/task11';
 // import { task12Old, task12New } from './es-features/task12';
 import { task13Old, task13New } from './es-features/task13';
 import { task14Old, task14New } from './es-features/task14';
