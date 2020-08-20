@@ -37,6 +37,8 @@ import { any } from './array-practice/task1';
 import { arrayDiff } from './array-practice/task2';
 import { forEachRight } from './array-practice/task3';
 import { union } from './array-practice/task4';
+//import { createGenerator } from './array-practice/task5';
+import { transformArrayToNumber } from './array-practice/task6';
 
 console.log('task1 old', task1Old(10) === 500); // true
 console.log('task1 new', task1New(10) === 500); // true
@@ -116,27 +118,52 @@ console.log('=============');
 console.log('====== ARRAY PRACTICE =======');
 
 console.log('====== task 1 start =======');
+
 console.log(any([0, 1, 2, 0], x => x >= 2)); // true
 console.log(any([0, 0, 1, 0])); // true
 console.log(any([0, 0, 0, 0], x => x >= 2)); // false
+
 console.log('======  task 1 end  =======');
 
 console.log('====== task 2 start =======');
+
 console.log(arrayDiff([1, 2, 3], [1, 2, 4])); // [3, 4]
 console.log(arrayDiff([1, 3, 3, 4], [1, 3, '4'])); // [4, '4']
+
 console.log('======  task 2 end  =======');
 
 console.log('====== task 3 start =======');
+
 forEachRight([1, 2, 3, 4], val => console.log(val)); // в консоль 4 3 2 1
+
 console.log('======  task 3 end  =======');
+
 console.log('====== task 4 start =======');
+
 console.log(union([5, 1, 2, 3, 3], [4, 3, 2])); // [5, 1, 2, 3, 4]
 console.log(union([5, 1, 3, 3, 4], [1, 3, 4])); // [5, 1, 3, 4]
+
 console.log('======  task 4 end  =======');
+
 console.log('====== task 5 start =======');
 
+// const generator = createGenerator([1, '6', 3, 2]);
+// generator.next(); // 1
+// generator.next(); // '6'
+// generator.next(); // 3
+// generator.next(); // 2
+// generator.next(); // 'Complete!'
+// generator.next(); // 'Complete!'
+
 console.log('======  task 5 end  =======');
+
 console.log('====== task 6 start =======');
+
+console.log(transformArrayToNumber([10, 20, 30], (acc, item) => acc + item)); // 60
+console.log(transformArrayToNumber([10, 20, 30], (acc, item) => acc + item, 10)); // 70
+console.log(transformArrayToNumber([10, 20, 30], (acc, item) => acc * item)); // 0
+console.log(transformArrayToNumber([10, 20, 30], (acc, item) => acc * item, 1)); // 6000
+console.log(transformArrayToNumber([10, 20, 30], (acc, item) => acc - item)); // -60
 
 console.log('======  task 6 end  =======');
 console.log('====== task 7 start =======');
