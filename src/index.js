@@ -42,6 +42,7 @@ import { transformArrayToNumber } from './array-practice/task6';
 import { take } from './array-practice/task7';
 import { without } from './array-practice/task8';
 import { indexOfAll } from './array-practice/task9';
+import { membersOnActiveMeetups } from './array-practice/task10';
 
 console.log('task1 old', task1Old(10) === 500); // true
 console.log('task1 new', task1New(10) === 500); // true
@@ -188,5 +189,13 @@ console.log(indexOfAll([1, 2, 3], 4)); // []
 
 console.log('======  task 9 end  =======');
 console.log('====== task 10 start =======');
+
+const meetups = [
+  { name: 'JavaScript', isActive: true, members: 100 },
+  { name: 'Angular', isActive: true, members: 900 },
+  { name: 'Node', isActive: false, members: 600 },
+  { name: 'React', isActive: true, members: 500 },
+];
+console.log(membersOnActiveMeetups(meetups)); // 1500
 
 console.log('======  task 10 end  =======');
