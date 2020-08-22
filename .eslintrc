@@ -12,5 +12,6 @@
     "prefer-destructuring": "off",
     "func-names": "off",
     "no-underscore-dangle": "off"
-  }
+  },
+  "parser": "babel-eslint"
 }
