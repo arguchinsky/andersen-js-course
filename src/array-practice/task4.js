@@ -9,5 +9,5 @@
  */
 
 export function union(array1, array2) {
-  return [...new Set([...array1, ...array2]).values()];
+  return Array.from(new Set([...array1, ...array2]));
 }
