@@ -37,11 +37,11 @@ export function task6New() {
   });
 
   const {
-    name,
-    value,
-    role: { name: role },
-    isActive,
-    cases: [{ id: firstCaseId }],
+    name = 'Empty',
+    value = 0,
+    role: { name: role } = { name: 'guest' },
+    isActive = false,
+    cases: [{ id: firstCaseId }] = [{ id: 'g1' }],
   } = userModule();
 
   return [name, value, role, Boolean(isActive), firstCaseId];
