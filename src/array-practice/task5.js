@@ -17,13 +17,10 @@
  */
 
 export function createGenerator(array) {
+  let current = 0
   const generator = {
-    _array: array,
-    _current: 0,
     next() {
-      const result = (this._current < this._array.length) ? this._array[this._current] : 'Complete!';
-      this._current++;
-      return result
+      return (current < array.length) ? array[current++] : 'Complete!';
     },
   };
   return generator;
