@@ -31,17 +31,18 @@ export function task4Old() {
 // При желании, можете использовать стрелочную функцию, вместо обычной
 
 export function task4New(x = 10, y = 20) {
+  const foo = () => 'test';
+
+  const prop = `baz${foo()}`;
+
   const obj = {
     x,
     y,
+    [prop]: 'new field',
     bar() {
       return this.x + this.y;
     },
   };
-
-  const foo = () => 'test';
-
-  obj[`baz${foo()}`] = 'new field';
 
   return obj;
 }
