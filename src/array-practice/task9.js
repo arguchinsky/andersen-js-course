@@ -12,5 +12,10 @@
  */
 
 export function indexOfAll(array, value) {
-  return array.map((el, i) => (el === value ? i : undefined)).filter(el => !(el === undefined));
+  // const indexes = [];
+  // array.forEach((el, i) => {
+  //   if (el === value) indexes.push(i);
+  // });
+  // return indexes;
+  return array.map((el, i) => (el === value ? i : undefined)).filter(el => el !== undefined);
 }
