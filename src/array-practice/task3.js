@@ -13,5 +13,5 @@
  */
 
 export function forEachRight(array, func) {
-  array.reverse().forEach(func);
+  [...array].reverse().forEach(func);
 }
