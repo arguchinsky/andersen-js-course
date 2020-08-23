@@ -70,6 +70,10 @@ class NewB extends NewA {
     this.age = age;
   }
 
+  static defaultUser() {
+    return new NewB('test', 0);
+  }
+
   getName(text) {
     return `${super.getName()} ${text}`;
   }
