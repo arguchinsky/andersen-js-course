@@ -44,5 +44,5 @@ export function task6New() {
     cases: [{ id: firstCaseId }] = [{ id: 'g1' }],
   } = userModule();
 
-  return [name, value, role, Boolean(isActive), firstCaseId];
+  return [name, value, role, isActive, firstCaseId];
 }

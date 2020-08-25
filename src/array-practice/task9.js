@@ -17,5 +17,6 @@ export function indexOfAll(array, value) {
   //   if (el === value) indexes.push(i);
   // });
   // return indexes;
-  return array.map((el, i) => (el === value ? i : undefined)).filter(el => el !== undefined);
+  // return array.map((el, i) => (el === value ? i : undefined)).filter(el => el !== undefined);
+  return  array.reduce((acc, curr, i) => (curr === value ? [...acc, i] : acc), []);
 }
