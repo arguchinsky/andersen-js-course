@@ -99,3 +99,8 @@ h1 {
 .products, .recipes{
   overflow: overlay;
 }
+
+.item:hover, .button:hover{
+  cursor: pointer;
+  box-shadow: 0px 0px 22px 0px rgb(236, 2, 72);
+}
