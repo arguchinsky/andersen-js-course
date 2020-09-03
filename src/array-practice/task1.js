@@ -14,3 +14,7 @@
  * console.log(any([0, 0, 1, 0])); -> true
  * console.log(any([0, 0, 0, 0])); -> false
  */
+
+export function any(array, func = Boolean) {
+  return array.some(func);
+}
