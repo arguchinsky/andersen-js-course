@@ -1,0 +1,50 @@
+.garbage-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 75%;
+}
+
+.garbage {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+  width: 97%;
+
+  background: rgb(255 255 255 / 30%);
+
+  color: black;
+
+  border-radius: 5px;
+}
+
+.garbage-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  
+  margin: 5px;
+
+  width: 80px;
+  height: 80px;
+
+  border-radius: 5px;
+
+  background: rgba(255, 255, 255, 0.5);
+
+  color: black;
+}
+
+.garbage-item:hover, .recipes-button:hover {
+  cursor: pointer;
+  background: rgb(236, 2, 72);
+  box-shadow: 0px 0px 22px 0px rgb(236, 2, 72);
+}
+.garbage-item:active, .recipes-button:active {
+  cursor: pointer;
+  background: rgb(76, 236, 2);
+  box-shadow: 0px 0px 22px 0px rgb(76, 236, 2);
+}

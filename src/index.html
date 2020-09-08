@@ -13,31 +13,99 @@
       </h1>
     </header>
     <main class="root">
-      <ul class="root-item products">
-        DONE PRODUCTS
-      </ul>
-      <section class="root-item workarea">
-        <li class="item recipe">recipe</li>
-        <ul class="ingredients">
-          <li class="item">item</li>
-          <li class="item">item</li>
-          <li class="item">item</li>
-          <li class="item">item</li>
-          <li class="item">item</li>
-          <li class="item">item</li>
+
+      <section class="products" id="products">
+        <ul class="products-list">
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
+          <li class="products-item">item</li>
         </ul>
-        <button class="item button">Craft</button>
       </section>
-      <ul class="root-item recipes">
-        <li class="item">steel</li>
-        <li class="item">rock</li>
-        <li class="item">rope</li>
-      </ul>
+
+      <section class="table">
+        <li class="table-item recipe">recipe</li>
+        <ul class="table-ingredients">
+          <li class="table-item">item</li>
+          <li class="table-item">item</li>
+          <li class="table-item">item</li>
+          <li class="table-item">item</li>
+          <li class="table-item">item</li>
+          <li class="table-item">item</li>
+        </ul>
+        <button class="table-button" id="craft">Craft</button>
+      </section>
+
+      <section class="recipes">
+        <ul class="recipes-list">
+          <li class="recipes-item" data-type="recipe" draggable="true">steel</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">rock</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">rope</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">steel</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">rock</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">rope</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">steel</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">rock</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">rope</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">steel</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">rock</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">rope</li>
+        </ul>
+        <ul class="recipes-ingredients" id="recipesIngredients">
+          <li class="recipes-ingredients-item">item1</li>
+          <li class="recipes-ingredients-item">item2</li>
+          <li class="recipes-ingredients-item">item3</li>
+          <li class="recipes-ingredients-item">item4</li>
+          <li class="recipes-ingredients-item">item5</li>
+          <li class="recipes-ingredients-item">item6</li>
+        </ul>
+        <form action="" method="get" class="create-recipe hide" id="createRecipe">
+          <input type="text" name="name" id="" placeholder="Title">
+          <input type="text" name="ingredient" id="" placeholder="ingredient 1">
+          <input type="text" name="ingredient" id="" placeholder="ingredient 2">
+          <input type="text" name="ingredient" id="" placeholder="ingredient 3">
+          <input type="text" name="ingredient" id="" placeholder="ingredient 4">
+          <input type="text" name="ingredient" id="" placeholder="ingredient 5">
+          <input type="text" name="ingredient" id="" placeholder="ingredient 6">
+        </form>
+        <button class="recipes-button" id="addRecipe">Add recipe</button>
+      </section>
+
     </main>
-    <ul class="garbage">
-      <li class="item">steel</li>
-      <li class="item">rock</li>
-      <li class="item">rope</li>
-    </ul>
+
+    <section class="garbage-section" id="garbage">
+      <ul class="garbage">
+        <li class="garbage-item" data-type="ingredient" draggable="true">steel</li>
+        <li class="garbage-item" data-type="ingredient" draggable="true">rock</li>
+        <li class="garbage-item" data-type="ingredient" draggable="true">rope</li>
+      </ul>
+    </section>
+    
   </body>
 </html>
