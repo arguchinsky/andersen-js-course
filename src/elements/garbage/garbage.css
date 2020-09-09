@@ -6,7 +6,7 @@
   width: 75%;
 }
 
-.garbage {
+.garbage-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

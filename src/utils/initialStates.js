@@ -1,0 +1,51 @@
+export const initialGarbageState = [
+  {
+    title: 'Rock',
+    dataId: 'rock',
+    className: 'garbage-item',
+    dataType: 'ingredient',
+    draggable: true,
+  },
+  {
+    title: 'Wood',
+    dataId: 'wood',
+    className: 'garbage-item',
+    dataType: 'ingredient',
+    draggable: true,
+  },
+  {
+    title: 'Stick',
+    dataId: 'stick',
+    className: 'garbage-item',
+    dataType: 'ingredient',
+    draggable: true,
+  },
+  {
+    title: 'Rope',
+    dataId: 'rope',
+    className: 'garbage-item',
+    dataType: 'ingredient',
+    draggable: true,
+  },
+  {
+    title: 'Steel',
+    dataId: 'steel',
+    className: 'garbage-item',
+    dataType: 'ingredient',
+    draggable: true,
+  },
+  {
+    title: 'Lighter',
+    dataId: 'lighter',
+    className: 'garbage-item',
+    dataType: 'ingredient',
+    draggable: true,
+  },
+  {
+    title: 'Glass',
+    dataId: 'glass',
+    className: 'garbage-item',
+    dataType: 'ingredient',
+    draggable: true,
+  },
+];
