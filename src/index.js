@@ -7,7 +7,7 @@ import { storage } from './utils';
 const garbageState = storage.load('garbage-state');
 
 const garbageModel = new GarbageModel(garbageState);
-const garbageView = new GarbageView(garbageState || garbageModel.state);
+const garbageView = new GarbageView(garbageModel.state);
 const garbage = new GarbageController(garbageModel, garbageView);
 
 console.log(garbage);
