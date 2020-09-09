@@ -1,7 +1,7 @@
 import { createElement, createItemsCollection } from '../../utils';
 
 export class GarbageView {
-  constructor({ state } = []) {
+  constructor(state = []) {
     this.garbage = document.getElementById('garbage');
 
     this.render(state);
