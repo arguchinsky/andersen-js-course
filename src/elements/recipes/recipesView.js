@@ -5,6 +5,8 @@ import {
   removeElement,
   initialRecipesState,
   createItem,
+  EventEmitter,
+  storage,
 } from '../../utils';
 
 function isRecipe(object) {
@@ -15,9 +17,26 @@ function getIngredients({ dataset: { id } }, state) {
   return state.find((el) => el.dataId === id).ingredients;
 }
 
-export class RecipesView {
-  constructor(state) {
-    this.state = state ?? initialRecipesState;
+function createRecipe(title, ingredients) {
+  return {
+    title,
+    dataId: title.toLowerCase(),
+    className: 'recipes-item',
+    dataType: 'recipe',
+    draggable: true,
+    ingredients,
+  };
+}
+
+function getInputs(form) {
+  return [...form.children].map((input) => input.name);
+}
+
+export class RecipesView extends EventEmitter {
+  constructor() {
+    super();
+
+    this.state = storage.load('recipes-state') ?? initialRecipesState;
 
     this.recipes = getElementById('recipes');
     this.addRecipe = getElementById('addRecipe');
@@ -26,6 +45,7 @@ export class RecipesView {
 
     this.render(this.state);
     this.recipes.addEventListener('mouseover', this.onHoverRecipe.bind(this));
+    this.addRecipe.addEventListener('click', this.handleAddRecipe.bind(this));
   }
 
   render(state) {
@@ -62,5 +82,13 @@ export class RecipesView {
     } else {
       this.hideRecipe();
     }
+  }
+
+  handleAddRecipe() {
+    const data = getInputs(this.createRecipe);
+    const name = data.shift();
+    const recipe = createRecipe(name, data);
+
+    this.emit('addRecipe', recipe);
   }
 }

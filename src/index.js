@@ -2,6 +2,8 @@
 import './styles/main.css';
 import { GarbageView } from './elements/garbage/garbageView';
 import { RecipesView } from './elements/recipes/recipesView';
+import { RecipesModel } from './elements/recipes/recipesModel';
+import { RecipesController } from './elements/recipes/recipesController';
 import { GarbageModel } from './elements/garbage/garbageModel';
 import { GarbageController } from './elements/garbage/garbageController';
 import { storage } from './utils';
@@ -13,5 +15,7 @@ const garbageView = new GarbageView(garbageModel.state);
 const garbage = new GarbageController(garbageModel, garbageView);
 
 const recipes = new RecipesView();
+const recipesModel = new RecipesModel();
+const recipesController = new RecipesController(recipes, recipesModel);
 
 console.log('Hi');

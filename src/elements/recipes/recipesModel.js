@@ -1,18 +1,18 @@
 import { initialRecipesState, storage } from '../../utils';
 
 export class RecipesModel {
-  constructor(state = initialRecipesState) {
-    this.state = state;
+  constructor() {
+    this.state = storage.load('recipes-state') ?? initialRecipesState;
   }
 
-  addItem(recipe) {
+  addRecipe(recipe) {
     this.state.push(recipe);
 
     this.saveState();
-    return this.state;
+    return [...this.state];
   }
 
   saveState() {
-    storage('recipes-state', this.state);
+    storage.save('recipes-state', this.state);
   }
 }
