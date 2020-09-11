@@ -1,15 +1,14 @@
-import { createElement, createItemsCollection } from '../../utils';
+import { createList, createItemsCollection, getElementById } from '../../utils';
 
 export class GarbageView {
   constructor(state = []) {
-    this.garbage = document.getElementById('garbage');
+    this.garbage = getElementById('garbage');
 
     this.render(state);
   }
 
   render(state) {
-    const garbageListItems = createItemsCollection(state);
-    const newGarbageList = createElement({ className: 'garbage-list' }, 'ul', ...garbageListItems);
+    const newGarbageList = createList('garbage-list', ...createItemsCollection(state));
 
     this.garbage.querySelector('.garbage-list').remove();
     this.garbage.append(newGarbageList);

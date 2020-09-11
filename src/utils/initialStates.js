@@ -49,3 +49,107 @@ export const initialGarbageState = [
     draggable: true,
   },
 ];
+
+export const initialTableState = {
+  recipe: {
+    title: 'Recipe',
+    dataId: 'recipe',
+    className: 'table-item',
+    dataType: 'recipe',
+    draggable: false,
+    ingredients: [],
+  },
+  ingredients: [
+    {
+      title: 'Empty',
+      dataId: 'empty',
+      className: 'table-item',
+      dataType: 'ingredient',
+      draggable: false,
+      ingredients: [],
+    },
+    {
+      title: 'Empty',
+      dataId: 'empty',
+      className: 'table-item',
+      dataType: 'ingredient',
+      draggable: false,
+      ingredients: [],
+    },
+    {
+      title: 'Empty',
+      dataId: 'empty',
+      className: 'table-item',
+      dataType: 'ingredient',
+      draggable: false,
+      ingredients: [],
+    },
+    {
+      title: 'Empty',
+      dataId: 'empty',
+      className: 'table-item',
+      dataType: 'ingredient',
+      draggable: false,
+      ingredients: [],
+    },
+    {
+      title: 'Empty',
+      dataId: 'empty',
+      className: 'table-item',
+      dataType: 'ingredient',
+      draggable: false,
+      ingredients: [],
+    },
+    {
+      title: 'Empty',
+      dataId: 'empty',
+      className: 'table-item',
+      dataType: 'ingredient',
+      draggable: false,
+      ingredients: [],
+    },
+  ],
+};
+
+export const initialRecipesState = [
+  {
+    title: 'Fire',
+    dataId: 'fire',
+    className: 'recipes-item',
+    dataType: 'recipe',
+    draggable: true,
+    ingredients: ['wood', 'paper', 'lighter'],
+  },
+  {
+    title: 'Hammer',
+    dataId: 'hammer',
+    className: 'recipes-item',
+    dataType: 'recipe',
+    draggable: true,
+    ingredients: ['rock', 'rope', 'stick'],
+  },
+  {
+    title: 'Knife',
+    dataId: 'knife',
+    className: 'recipes-item',
+    dataType: 'recipe',
+    draggable: true,
+    ingredients: ['steel', 'rope', 'stick'],
+  },
+  {
+    title: 'Knife',
+    dataId: 'knife',
+    className: 'recipes-item',
+    dataType: 'recipe',
+    draggable: true,
+    ingredients: ['steel', 'rope', 'stick'],
+  },
+  {
+    title: 'Box',
+    dataId: 'box',
+    className: 'recipes-item',
+    dataType: 'recipe',
+    draggable: true,
+    ingredients: ['wood', 'rope'],
+  },
+];

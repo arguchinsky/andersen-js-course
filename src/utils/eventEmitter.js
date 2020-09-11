@@ -16,6 +16,6 @@ export class EventEmitter {
   }
 
   emit(event, value) {
-    this.events[event].forEach(callback => callback(value));
+    this.events[event].forEach((callback) => callback(value));
   }
 }

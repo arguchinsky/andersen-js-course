@@ -43,11 +43,20 @@
 
 .recipes-ingredients {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+
+.ingredients-list {
+  display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 
-  width: 80%;
+  color: rgb(76, 236, 2);
 
+  text-align: center;
+  text-transform: uppercase;
   font-weight: bold;
 }
 

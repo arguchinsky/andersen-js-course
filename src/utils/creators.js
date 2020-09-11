@@ -1,7 +1,6 @@
-export function createElement(
+export function createItem(
   { title = 'Empty', dataId = 'empty', className, dataType = 'empty', draggable = false },
-  tag = 'li',
-  ...children
+  tag = 'li'
 ) {
   const element = document.createElement(tag);
 
@@ -9,15 +8,20 @@ export function createElement(
   element.setAttribute('data-id', dataId);
   element.setAttribute('data-type', dataType);
   element.setAttribute('draggable', draggable);
-  if (children.length > 0) {
-    element.append(...children);
-  } else {
-    element.textContent = title;
-  }
+  element.textContent = title;
+
+  return element;
+}
+
+export function createList(className, ...children) {
+  const element = document.createElement('ul');
+
+  element.className = className;
+  element.append(...children);
 
   return element;
 }
 
 export function createItemsCollection(objects) {
-  return objects.map(el => createElement(el));
+  return objects.map((el) => createItem(el));
 }
