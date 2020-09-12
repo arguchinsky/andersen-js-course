@@ -1,13 +1,13 @@
-const success = (str) => {
+export const success = (str) => {
   console.log('Success parse!');
   console.log(str);
 };
-const failure = (err) => {
+export const failure = (err) => {
   console.log('Failure parse!');
   console.log(err);
 };
 
-function parseJSON(jsonStr, successCb, failureCb) {
+export function parseJSON(jsonStr, successCb, failureCb) {
   try {
     const json = JSON.parse(jsonStr);
     successCb(json);
@@ -15,6 +15,3 @@ function parseJSON(jsonStr, successCb, failureCb) {
     failureCb(error);
   }
 }
-
-parseJSON('{ "x": 10 }', success, failure);
-parseJSON('{x}', success, failure);

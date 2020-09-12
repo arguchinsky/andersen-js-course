@@ -1,6 +1,6 @@
-const createCb = (str) => () => console.log(str);
+export const createCb = (str) => () => console.log(str);
 
-function foo(x, cb) {
+export function fooTask1(x, cb) {
   if (x <= 10) {
     console.log('x <= 10');
   } else {
@@ -8,6 +8,3 @@ function foo(x, cb) {
     cb();
   }
 }
-
-foo(2, createCb('done'));
-foo(12, createCb('done'));

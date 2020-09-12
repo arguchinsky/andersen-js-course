@@ -1,7 +1,5 @@
 const asyncBar = async () => 'Some string!';
 
-const foo = async () => {
+export const fooTask9 = async () => {
   console.log(await asyncBar());
 };
-
-foo();

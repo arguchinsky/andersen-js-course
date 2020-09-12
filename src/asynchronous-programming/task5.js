@@ -1,4 +1,4 @@
-const urls = [
+export const urls = [
   'http://www.json-generator.com/api/json/get/cevhxOsZnS',
   'http://www.json-generator.com/api/json/get/cguaPsRxAi',
   'http://www.json-generator.com/api/json/get/cfDZdmxnDm',
@@ -6,13 +6,13 @@ const urls = [
   'http://www.json-generator.com/api/json/get/ceQMMKpidK',
 ];
 
-const getResponsesParallel = (array) => {
-  Promise.all(
-    array.map((url) => fetch(url).then((response) => response.json()))
-  ).then((dataArray) => console.log(dataArray));
+export const getResponsesParallel = (array) => {
+  Promise.all(array.map((url) => fetch(url).then((response) => response.json()))).then((data) =>
+    console.log('<<< TASK 5 parallel >>>', data, '<<< TASK 5 parallel END >>>')
+  );
 };
 
-const getResponsesSequence1 = (array) => {
+export const getResponsesSequence = (array) => {
   array
     .reduce(
       (acc, url) =>
@@ -24,18 +24,14 @@ const getResponsesSequence1 = (array) => {
       Promise.resolve([])
     )
     .then((data) => {
-      console.log(data);
+      console.log('<<< TASK 5 sequence >>>', data, '<<< TASK 5 sequence END >>>');
     });
 };
 
-const getResponsesSequence2 = (array) =>
+export const getResponsesSequence2 = (array) =>
   array.forEach((url) =>
     fetch(url)
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => console.log('<<< TASK 5 sequence2 >>>', data))
       .catch((error) => console.log(error))
   );
-
-getResponsesParallel(urls);
-getResponsesSequence1(urls);
-getResponsesSequence2(urls);

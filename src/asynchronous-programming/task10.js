@@ -1,4 +1,4 @@
-class Musician {
+export class Musician {
   constructor(albumUrl) {
     this.albumUrl = albumUrl;
   }
@@ -10,7 +10,3 @@ class Musician {
     return albums;
   }
 }
-
-new Musician('https://jsonplaceholder.typicode.com/albums')
-  .getAlbums()
-  .then((albums) => console.log(albums));

@@ -1,6 +1,6 @@
 const getUsers = (url) => fetch(url);
 
-async function foo(url) {
+export async function fooTask8(url) {
   try {
     const response = await getUsers(url);
     const [user] = await response.json();
@@ -10,5 +10,3 @@ async function foo(url) {
     console.log(error);
   }
 }
-
-foo('https://jsonplaceholder.typicode.com/users');
