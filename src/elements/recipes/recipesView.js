@@ -78,8 +78,8 @@ export class RecipesView extends EventEmitter {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  dragRecipe(dataTransfer, recipe) {
-    recipe.draggable = false;
+  dragRecipe(dataTransfer, item) {
+    const recipe = { ...item, draggable: false };
     dataTransfer.setData('recipe', JSON.stringify(recipe));
   }
 

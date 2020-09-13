@@ -14,6 +14,10 @@ export class GarbageModel {
     return [...this.state];
   }
 
+  getItem(id) {
+    return this.state.find((el) => el.dataId === id);
+  }
+
   saveState() {
     storage.save('garbage-state', this.state);
   }

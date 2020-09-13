@@ -2,25 +2,36 @@ import { initialTableState } from '../../utils';
 
 export class TableModel {
   constructor() {
-    this.state = initialTableState;
+    this.state = { ...initialTableState };
   }
 
   addRecipe(recipe) {
     this.state.recipe = { ...recipe };
 
-    return this.state;
+    return { ...this.state };
   }
 
   addIngredient(ingredient) {
-    this.state.ingredient.pop();
-    this.state.ingredient.unshift(ingredient);
+    const ingredients = [...this.state.ingredients];
+    ingredients.pop();
+    ingredients.unshift(ingredient);
 
-    return this.state;
+    this.state.ingredients = [...ingredients];
+
+    return { ...this.state };
+  }
+
+  getRecipe() {
+    return { ...this.state.recipe };
+  }
+
+  getIngredients() {
+    return [...this.state.ingredients];
   }
 
   dropState() {
-    this.state = initialTableState;
+    this.state = { ...initialTableState };
 
-    return this.state;
+    return { ...this.state };
   }
 }

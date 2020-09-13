@@ -14,6 +14,13 @@ export const initialGarbageState = [
     draggable: true,
   },
   {
+    title: 'Paper',
+    dataId: 'paper',
+    className: 'garbage-item',
+    dataType: 'ingredient',
+    draggable: true,
+  },
+  {
     title: 'Stick',
     dataId: 'stick',
     className: 'garbage-item',

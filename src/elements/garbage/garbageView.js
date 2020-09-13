@@ -1,10 +1,14 @@
-import { createList, createItemsCollection, getElementById } from '../../utils';
+/* eslint-disable no-param-reassign */
+/* eslint-disable class-methods-use-this */
+import { createList, createItemsCollection, getElementById, EventEmitter } from '../../utils';
 
-export class GarbageView {
-  constructor(state = []) {
+export class GarbageView extends EventEmitter {
+  constructor() {
+    super();
+
     this.garbage = getElementById('garbage');
 
-    this.render(state);
+    this.garbage.addEventListener('dragstart', this.handleDrag.bind(this));
   }
 
   render(state) {
@@ -14,7 +18,16 @@ export class GarbageView {
     this.garbage.append(newGarbageList);
   }
 
+  dragItem(dataTransfer, item) {
+    const ingredient = { ...item, draggable: false };
+    dataTransfer.setData('ingredient', JSON.stringify(ingredient));
+  }
+
   updateView(newState) {
     this.render(newState);
+  }
+
+  handleDrag(event) {
+    this.emit('garbageDrag', event);
   }
 }
