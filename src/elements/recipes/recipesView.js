@@ -1,23 +1,19 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-return-assign */
 import {
   getElementById,
   createItemsCollection,
   createList,
   removeElement,
-  initialRecipesState,
   createItem,
   EventEmitter,
-  storage,
 } from '../../utils';
 
 function isRecipe(object) {
   return object.dataset.type === 'recipe';
 }
 
-function getIngredients({ dataset: { id } }, state) {
-  return state.find((el) => el.dataId === id).ingredients;
-}
-
-function createRecipe(title, ingredients) {
+function createRecipe(title = 'Empty', ingredients) {
   return {
     title,
     dataId: title.toLowerCase(),
@@ -29,22 +25,26 @@ function createRecipe(title, ingredients) {
 }
 
 function getInputs(form) {
-  return [...form.children].map((input) => input.name);
+  return Array.from(form.children)
+    .filter((input) => input.value)
+    .map((input) => input.value);
+}
+
+function clearFormFields(form) {
+  Array.from(form.children).forEach((input) => (input.value = ''));
 }
 
 export class RecipesView extends EventEmitter {
   constructor() {
     super();
 
-    this.state = storage.load('recipes-state') ?? initialRecipesState;
-
     this.recipes = getElementById('recipes');
     this.addRecipe = getElementById('addRecipe');
     this.recipesIngredients = getElementById('recipesIngredients');
     this.createRecipe = getElementById('createRecipe');
 
-    this.render(this.state);
-    this.recipes.addEventListener('mouseover', this.onHoverRecipe.bind(this));
+    this.recipes.addEventListener('dragstart', this.handleDragRecipe.bind(this));
+    this.recipes.addEventListener('mouseover', this.handleHoverRecipe.bind(this));
     this.addRecipe.addEventListener('click', this.handleAddRecipe.bind(this));
   }
 
@@ -56,12 +56,13 @@ export class RecipesView extends EventEmitter {
     this.recipes.prepend(recipesList);
   }
 
-  showRecipe(target) {
-    const ingredients = getIngredients(target, this.state).map((item) =>
-      createItem({ className: 'recipes-ingredients-item', title: item })
+  showRecipe(ingredients) {
+    const ingredientsList = createList(
+      'ingredients-list',
+      ...ingredients.map((item) =>
+        createItem({ className: 'recipes-ingredients-item', title: item })
+      )
     );
-
-    const ingredientsList = createList('ingredients-list', ...ingredients);
 
     removeElement(this.recipesIngredients, '.ingredients-list');
 
@@ -76,9 +77,15 @@ export class RecipesView extends EventEmitter {
     this.createRecipe.classList.remove('hide');
   }
 
-  onHoverRecipe({ target }) {
+  // eslint-disable-next-line class-methods-use-this
+  dragRecipe(dataTransfer, recipe) {
+    recipe.draggable = false;
+    dataTransfer.setData('recipe', JSON.stringify(recipe));
+  }
+
+  handleHoverRecipe({ target }) {
     if (isRecipe(target)) {
-      this.showRecipe(target);
+      this.emit('showRecipe', target);
     } else {
       this.hideRecipe();
     }
@@ -86,9 +93,19 @@ export class RecipesView extends EventEmitter {
 
   handleAddRecipe() {
     const data = getInputs(this.createRecipe);
-    const name = data.shift();
-    const recipe = createRecipe(name, data);
+    if (data[0]) {
+      clearFormFields(this.createRecipe);
+      const name = data.shift();
+      const recipe = createRecipe(name, data);
 
-    this.emit('addRecipe', recipe);
+      this.emit('addRecipe', recipe);
+    } else {
+      // eslint-disable-next-line no-alert
+      alert('You should fill in the Title field!');
+    }
+  }
+
+  handleDragRecipe(event) {
+    this.emit('dragRecipe', event);
   }
 }

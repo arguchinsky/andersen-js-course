@@ -12,6 +12,14 @@ export class RecipesModel {
     return [...this.state];
   }
 
+  getIngredients(id) {
+    return [...this.state.find((el) => el.dataId === id).ingredients];
+  }
+
+  getRecipe(id) {
+    return { ...this.state.find((el) => el.dataId === id) };
+  }
+
   saveState() {
     storage.save('recipes-state', this.state);
   }

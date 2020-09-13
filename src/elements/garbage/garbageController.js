@@ -1,5 +1,11 @@
+import { GarbageModel } from './garbageModel';
+import { GarbageView } from './garbageView';
+
+const model = new GarbageModel();
+const view = new GarbageView(model.state);
+
 export class GarbageController {
-  constructor(model, view) {
+  constructor() {
     this.garbageModel = model;
     this.garbageView = view;
   }
