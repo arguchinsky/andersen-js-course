@@ -20,28 +20,6 @@ export class TableView extends EventEmitter {
     this.craftButton.addEventListener('click', this.handleCraftButton.bind(this));
   }
 
-  // addRecipe(recipe) {
-  //   const newRecipe = createItem(recipe);
-
-  //   newRecipe.classList.add('recipe');
-
-  //   removeElement(this.table, '.recipe');
-  //   this.table.prepend(newRecipe);
-  // }
-
-  // addIngredient(ingredient) {
-  //   const newIngredient = createItem(ingredient);
-  //   const ingredients = createItemsCollection(this.state.ingredients);
-
-  //   ingredients.pop();
-  //   ingredients.unshift(newIngredient);
-
-  //   const ingredientsList = createList('table-ingredients', ...createItemsCollection(ingredients));
-
-  //   removeElement(this.table, '.table-ingredients');
-  //   this.craftButton.before(ingredientsList);
-  // }
-
   render({ recipe, ingredients }) {
     const tableRecipe = createItem(recipe);
     const ingredientsList = createList('table-ingredients', ...createItemsCollection(ingredients));

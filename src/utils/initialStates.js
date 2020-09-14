@@ -60,7 +60,7 @@ export const initialGarbageState = [
 export const initialTableState = {
   recipe: {
     title: 'Recipe',
-    dataId: 'recipe',
+    dataId: 'empty',
     className: 'table-item',
     dataType: 'recipe',
     draggable: false,

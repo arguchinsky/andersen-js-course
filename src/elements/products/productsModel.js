@@ -1,16 +1,18 @@
-import { storage } from '../../utils';
+import { createProduct, storage } from '../../utils';
 
-export class ProductModel {
-  constructor(state = []) {
-    this.state = state;
-
-    this.saveState();
+export class ProductsModel {
+  constructor() {
+    this.state = storage.load('product-state') ?? [];
   }
 
-  addItem(item) {
-    this.state.push(item);
+  addProduct(item) {
+    this.state.push(createProduct(item));
 
     this.saveState();
+    return [...this.state];
+  }
+
+  getState() {
     return [...this.state];
   }
 

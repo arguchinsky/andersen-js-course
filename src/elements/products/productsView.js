@@ -1,10 +1,10 @@
-import { createList, createItemsCollection, getElementById } from '../../utils';
+import { createList, createItemsCollection, getElementById, EventEmitter } from '../../utils';
 
-export class ProductView {
-  constructor(state = []) {
+export class ProductsView extends EventEmitter {
+  constructor() {
+    super();
+
     this.products = getElementById('products');
-
-    this.render(state);
   }
 
   render(state) {
@@ -13,9 +13,5 @@ export class ProductView {
 
     this.products.querySelector('.products-list').remove();
     this.products.append(newProductsList);
-  }
-
-  updateView(newState) {
-    this.render(newState);
   }
 }

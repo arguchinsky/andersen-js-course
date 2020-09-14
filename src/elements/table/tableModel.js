@@ -29,6 +29,16 @@ export class TableModel {
     return [...this.state.ingredients];
   }
 
+  getState() {
+    return { ...this.state };
+  }
+
+  dropIngredients() {
+    this.state.ingredients = [...initialTableState.ingredients];
+
+    return { ...this.state };
+  }
+
   dropState() {
     this.state = { ...initialTableState };
 

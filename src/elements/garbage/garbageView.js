@@ -23,10 +23,6 @@ export class GarbageView extends EventEmitter {
     dataTransfer.setData('ingredient', JSON.stringify(ingredient));
   }
 
-  updateView(newState) {
-    this.render(newState);
-  }
-
   handleDrag(event) {
     this.emit('garbageDrag', event);
   }

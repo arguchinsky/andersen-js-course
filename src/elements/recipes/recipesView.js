@@ -6,22 +6,12 @@ import {
   createList,
   removeElement,
   createItem,
+  createRecipe,
   EventEmitter,
 } from '../../utils';
 
 function isRecipe(object) {
   return object.dataset.type === 'recipe';
-}
-
-function createRecipe(title = 'Empty', ingredients) {
-  return {
-    title,
-    dataId: title.toLowerCase(),
-    className: 'recipes-item',
-    dataType: 'recipe',
-    draggable: true,
-    ingredients,
-  };
 }
 
 function getInputs(form) {
@@ -94,11 +84,12 @@ export class RecipesView extends EventEmitter {
   handleAddRecipe() {
     const data = getInputs(this.createRecipe);
     if (data[0]) {
-      clearFormFields(this.createRecipe);
       const name = data.shift();
       const recipe = createRecipe(name, data);
 
       this.emit('addRecipe', recipe);
+
+      clearFormFields(this.createRecipe);
     } else {
       // eslint-disable-next-line no-alert
       alert('You should fill in the Title field!');
