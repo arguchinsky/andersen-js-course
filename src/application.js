@@ -1,11 +1,13 @@
-import { ProductsModel } from './elements/products/productsModel';
-import { ProductsView } from './elements/products/productsView';
-import { TableModel } from './elements/table/tableModel';
-import { TableView } from './elements/table/tableView';
-import { RecipesModel } from './elements/recipes/recipesModel';
-import { RecipesView } from './elements/recipes/recipesView';
-import { GarbageModel } from './elements/garbage/garbageModel';
-import { GarbageView } from './elements/garbage/garbageView';
+import {
+  ProductsModel,
+  ProductsView,
+  TableModel,
+  TableView,
+  RecipesModel,
+  RecipesView,
+  GarbageModel,
+  GarbageView,
+} from './elements';
 
 const productModel = new ProductsModel();
 const productView = new ProductsView();
@@ -16,7 +18,7 @@ const recipeView = new RecipesView();
 const garbageModel = new GarbageModel();
 const garbageView = new GarbageView();
 
-export class ApplicationController {
+export class Application {
   constructor() {
     this.productModel = productModel;
     this.productView = productView;
@@ -33,13 +35,18 @@ export class ApplicationController {
     this.garbageView.render(this.garbageModel.getState());
 
     garbageView.subscribe('garbageDrag', this.getGarbageItem.bind(this));
+    garbageView.subscribe('refreshGarbage', this.refreshGarbage.bind(this));
+
+    productView.subscribe('refreshProducts', this.refreshProducts.bind(this));
 
     recipeView.subscribe('addRecipe', this.addRecipe.bind(this));
     recipeView.subscribe('showRecipe', this.getRecipeIngredients.bind(this));
     recipeView.subscribe('dragRecipe', this.getRecipe.bind(this));
+    recipeView.subscribe('refreshRecipes', this.refreshRecipes.bind(this));
 
     tableView.subscribe('droppedItem', this.addDroppedItem.bind(this));
     tableView.subscribe('craft', this.craft.bind(this));
+    tableView.subscribe('refreshTable', this.refreshTable.bind(this));
   }
 
   getGarbageItem({
@@ -52,8 +59,11 @@ export class ApplicationController {
   }
 
   addRecipe(recipe) {
-    this.recipeView.render(this.recipeModel.addRecipe(recipe));
-    this.garbageView.render(this.garbageModel.addItems(recipe));
+    const ingredients = recipe.ingredients.map((item) => item.trim());
+    const newRecipe = { ...recipe, ingredients };
+
+    this.recipeView.render(this.recipeModel.addRecipe(newRecipe));
+    this.garbageView.render(this.garbageModel.addItems(newRecipe));
   }
 
   getRecipe({
@@ -98,12 +108,28 @@ export class ApplicationController {
       if (!tableIngredients.length) {
         alert('You should drop ingredients on the table!');
       } else if (recipeIngredients !== tableIngredients) {
-        alert("Ingredients don't much with recipe!'\nPlease check the recipe and try again!");
+        alert("Ingredients don't much with the recipe!'\nPlease check the recipe and try again!");
         this.tableView.render({ ...this.tableModel.dropIngredients() });
       } else {
         this.productView.render(this.productModel.addProduct({ ...this.tableModel.getRecipe() }));
-        this.tableView.render({ ...this.tableModel.dropState() });
+        this.tableView.render({ ...this.tableModel.refreshState() });
       }
     }
+  }
+
+  refreshTable() {
+    this.tableView.render({ ...this.tableModel.refreshState() });
+  }
+
+  refreshProducts() {
+    this.productView.render(this.productModel.refreshState());
+  }
+
+  refreshRecipes() {
+    this.recipeView.render(this.recipeModel.refreshState());
+  }
+
+  refreshGarbage() {
+    this.garbageView.render(this.garbageModel.refreshState());
   }
 }

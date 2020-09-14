@@ -24,6 +24,13 @@ export class RecipesModel {
     return [...this.state];
   }
 
+  refreshState() {
+    this.state = [...initialRecipesState];
+    storage.save('recipes-state', this.state);
+
+    return [...this.state];
+  }
+
   saveState() {
     storage.save('recipes-state', this.state);
   }

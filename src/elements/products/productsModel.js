@@ -16,6 +16,13 @@ export class ProductsModel {
     return [...this.state];
   }
 
+  refreshState() {
+    this.state = [];
+    storage.save('product-state', this.state);
+
+    return [...this.state];
+  }
+
   saveState() {
     storage.save('product-state', this.state);
   }

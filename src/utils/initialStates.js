@@ -144,14 +144,6 @@ export const initialRecipesState = [
     ingredients: ['steel', 'rope', 'stick'],
   },
   {
-    title: 'Knife',
-    dataId: 'knife',
-    className: 'recipes-item',
-    dataType: 'recipe',
-    draggable: true,
-    ingredients: ['steel', 'rope', 'stick'],
-  },
-  {
     title: 'Box',
     dataId: 'box',
     className: 'recipes-item',

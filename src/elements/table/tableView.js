@@ -14,10 +14,12 @@ export class TableView extends EventEmitter {
 
     this.table = getElementById('table');
     this.craftButton = getElementById('craftButton');
+    this.refreshButton = getElementById('refreshTableButton');
 
     this.table.addEventListener('dragover', this.handleDragOver.bind(this));
     this.table.addEventListener('drop', this.handleDrop.bind(this));
     this.craftButton.addEventListener('click', this.handleCraftButton.bind(this));
+    this.refreshButton.addEventListener('click', this.handleRefreshTable.bind(this));
   }
 
   render({ recipe, ingredients }) {
@@ -61,5 +63,9 @@ export class TableView extends EventEmitter {
 
   handleCraftButton() {
     this.emit('craft');
+  }
+
+  handleRefreshTable() {
+    this.emit('refreshTable');
   }
 }

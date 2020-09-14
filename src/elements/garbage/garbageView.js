@@ -7,8 +7,10 @@ export class GarbageView extends EventEmitter {
     super();
 
     this.garbage = getElementById('garbage');
+    this.refreshGarbageButton = getElementById('refreshGarbageButton');
 
     this.garbage.addEventListener('dragstart', this.handleDrag.bind(this));
+    this.refreshGarbageButton.addEventListener('click', this.handleRefreshGarbage.bind(this));
   }
 
   render(state) {
@@ -25,5 +27,9 @@ export class GarbageView extends EventEmitter {
 
   handleDrag(event) {
     this.emit('garbageDrag', event);
+  }
+
+  handleRefreshGarbage() {
+    this.emit('refreshGarbage');
   }
 }

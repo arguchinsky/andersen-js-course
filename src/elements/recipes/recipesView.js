@@ -29,13 +29,15 @@ export class RecipesView extends EventEmitter {
     super();
 
     this.recipes = getElementById('recipes');
-    this.addRecipe = getElementById('addRecipe');
+    this.addRecipeButton = getElementById('addRecipe');
+    this.refreshRecipeButton = getElementById('refreshRecipesButton');
     this.recipesIngredients = getElementById('recipesIngredients');
     this.createRecipe = getElementById('createRecipe');
 
     this.recipes.addEventListener('dragstart', this.handleDragRecipe.bind(this));
     this.recipes.addEventListener('mouseover', this.handleHoverRecipe.bind(this));
-    this.addRecipe.addEventListener('click', this.handleAddRecipe.bind(this));
+    this.addRecipeButton.addEventListener('click', this.handleAddRecipe.bind(this));
+    this.refreshRecipeButton.addEventListener('click', this.handleRefreshRecipes.bind(this));
   }
 
   render(state) {
@@ -85,11 +87,15 @@ export class RecipesView extends EventEmitter {
     const data = getInputs(this.createRecipe);
     if (data[0]) {
       const name = data.shift();
-      const recipe = createRecipe(name, data);
+      if (data.length) {
+        const recipe = createRecipe(name, data);
 
-      this.emit('addRecipe', recipe);
+        this.emit('addRecipe', recipe);
 
-      clearFormFields(this.createRecipe);
+        clearFormFields(this.createRecipe);
+      } else {
+        alert('You should fill in one or more ingredient fields!');
+      }
     } else {
       // eslint-disable-next-line no-alert
       alert('You should fill in the Title field!');
@@ -98,5 +104,9 @@ export class RecipesView extends EventEmitter {
 
   handleDragRecipe(event) {
     this.emit('dragRecipe', event);
+  }
+
+  handleRefreshRecipes() {
+    this.emit('refreshRecipes');
   }
 }

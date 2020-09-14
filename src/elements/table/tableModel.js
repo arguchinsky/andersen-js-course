@@ -39,7 +39,7 @@ export class TableModel {
     return { ...this.state };
   }
 
-  dropState() {
+  refreshState() {
     this.state = { ...initialTableState };
 
     return { ...this.state };

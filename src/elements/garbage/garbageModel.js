@@ -1,17 +1,22 @@
 import { initialGarbageState, createIngredient, storage } from '../../utils';
 
+function getIngredientsList(state) {
+  return state.map((ingredient) => ingredient.dataId);
+}
 export class GarbageModel {
   constructor() {
     this.state = storage.load('garbage-state') ?? initialGarbageState;
-    this.ingredientsList = this.state.map((ingredient) => ingredient.dataId);
-
-    this.saveState();
+    this.ingredientsList = getIngredientsList(this.state);
   }
 
   addItems({ ingredients }) {
     ingredients
       .filter((ingredient) => !this.ingredientsList.includes(ingredient.toLowerCase()))
-      .forEach((ingredient) => this.state.push(createIngredient(ingredient)));
+      .forEach((ingredient) => {
+        this.ingredientsList.push(ingredient);
+        this.state.push(createIngredient(ingredient));
+      });
+
     this.saveState();
     return [...this.state];
   }
@@ -21,6 +26,14 @@ export class GarbageModel {
   }
 
   getState() {
+    return [...this.state];
+  }
+
+  refreshState() {
+    this.state = [...initialGarbageState];
+    this.ingredientsList = getIngredientsList([...initialGarbageState]);
+    this.saveState();
+
     return [...this.state];
   }
 

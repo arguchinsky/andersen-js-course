@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import './styles/main.css';
-import { ApplicationController } from './applicationController';
+import { Application } from './application';
 
-const app = new ApplicationController();
+const app = new Application();
 
 // eslint-disable-next-line no-console
 console.log('Hi');
