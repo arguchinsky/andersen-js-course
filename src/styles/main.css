@@ -1,8 +1,61 @@
+@import '../elements/garbage/garbage.css';
+@import '../elements/products/products.css';
+@import '../elements/recipes/recipes.css';
+@import '../elements/table/table.css';
+
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  
   margin: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+
+  background: url(../images/background.jpg);
+}
+
+ul {
+  padding: 0%;
+}
+
+li {
+  list-style: none;
 }
 
 h1 {
   text-align: center;
+}
+
+.root {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  color: black;
+  
+  width: 75%;
+  min-height: 160px;
+  height: auto;
+
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 2.5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(236, 2, 72);
+  border-radius: 2.5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(76, 236, 2);
 }

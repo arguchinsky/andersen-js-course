@@ -7,8 +7,73 @@
     <title>Andersen JS Course</title>
   </head>
   <body>
-    <h1>
-      Andersen JS Course
-    </h1>
+    <header>
+      <h1>
+        Garbage Crafting Application
+      </h1>
+    </header>
+    <main class="root">
+
+      <section class="products" id="products">
+        <button class="products-button" id="refreshProductsButton">&#x1F480&#x1F6BD&#x1F480</button>
+        <ul class="products-list">
+        </ul>
+      </section>
+
+      <section class="table" id="table">
+        <li class="table-item recipe">recipe</li>
+        <ul class="table-ingredients">
+        </ul>
+        <button class="table-button" id="craftButton">Craft</button>
+        <button class="table-button" id="refreshTableButton">&#x1F479&#x1F6BD&#x1F479</button>
+      </section>
+
+      <section class="recipes" id="recipes">
+        <ul class="recipes-list">
+          <li class="recipes-item" data-type="recipe" draggable="true">steel</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">rock</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">rope</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">steel</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">rock</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">rope</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">steel</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">rock</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">rope</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">steel</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">rock</li>
+          <li class="recipes-item" data-type="recipe" draggable="true">rope</li>
+        </ul>
+        <ul class="recipes-ingredients hide" id="recipesIngredients">
+          <ul class="ingredients-list">
+            <li class="recipes-ingredients-item">item1</li>
+            <li class="recipes-ingredients-item">item2</li>
+            <li class="recipes-ingredients-item">item3</li>
+            <li class="recipes-ingredients-item">item4</li>
+            <li class="recipes-ingredients-item">item5</li>
+            <li class="recipes-ingredients-item">item6</li>
+          </ul>
+        </ul>
+        <form action="" method="get" class="create-recipe" id="createRecipe">
+          <input type="text" name="name" id="" placeholder="Title">
+          <input type="text" name="ingredient" id="" placeholder="Ingredient 1">
+          <input type="text" name="ingredient" id="" placeholder="Ingredient 2">
+          <input type="text" name="ingredient" id="" placeholder="Ingredient 3">
+          <input type="text" name="ingredient" id="" placeholder="Ingredient 4">
+          <input type="text" name="ingredient" id="" placeholder="Ingredient 5">
+          <input type="text" name="ingredient" id="" placeholder="Ingredient 6">
+        </form>
+        <section class="recipes-buttons">
+          <button class="recipes-button" id="addRecipe">Add recipe</button>
+          <button class="recipes-button" id="refreshRecipesButton">&#x1F9D9&#x1F6BD&#x1F9D9</button>
+        </section>
+      </section>
+
+    </main>
+
+    <section class="garbage-section" id="garbage">
+      <ul class="garbage-list"></ul>
+      <button class="garbage-button" id="refreshGarbageButton">&#x1F47E&#x1F6BD&#x1F47E</button>
+    </section>
+    
   </body>
 </html>
