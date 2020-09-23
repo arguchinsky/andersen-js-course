@@ -2,26 +2,10 @@ import cors from 'cors';
 import express from 'express';
 import bodyParser from 'body-parser';
 import { PORT } from './config';
+import { models } from './model/model';
+import moviesRoutes from './routes/moviesRoutes';
+import showsRoutes from './routes/showsRoutes';
 
-const movies = [
-  {
-    id: 'friends',
-    title: 'Friends',
-    url: 'http://seasonvar.ru/serial-394-Druz_ya-01-sezon.html',
-  },
-  {
-    id: 'scrubs',
-    title: 'Scrubs',
-    url: 'http://seasonvar.ru/serial-247-Klinika-1-season.html',
-  },
-  {
-    id: 'the-mentalist',
-    title: 'The Mentalist',
-    url: 'http://seasonvar.ru/serial-106-Mentalist.html',
-  },
-];
-
-console.log(movies.find((movie) => movie.id === 1));
 const app = express();
 
 app.use(cors());
@@ -29,33 +13,51 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
-  [, req.movie] = movies;
+  req.context = {
+    models,
+  };
   next();
 });
 
-app.get('/movies', (req, res) => res.send(movies));
+app.use('/movies', moviesRoutes);
+app.use('/shows', showsRoutes);
 
-app.post('/movies', (req, res) => {
-  const { id, title, url } = req.body;
+// app.get('/movies/:id', (req, res) => {
+//   const movie = req.context.models.movies.find((item) => item.id === req.params.id);
+//   res.send(movie);
+// });
 
-  const movie = {
-    id,
-    title,
-    url,
-  };
+// app.get('/shows/:id', (req, res) => {
+//   const show = req.context.models.shows.find((item) => item.id === req.params.id);
+//   res.send(show);
+// });
 
-  movies.push(movie);
+// app.get('/movies', (req, res) => res.send(req.context.models.movies));
 
-  res.send('New movie was posted successful');
-});
+// app.get('/shows', (req, res) => res.send(req.context.models.shows));
+// app.post('/movies', (req, res) => {
+//   const { id, title, url } = req.body;
 
-app.put('/movies/:movieId', (req, res) =>
-  res.send(`Method PUT has called for  movie id= ${req.params.movieId}`)
-);
+//   const movie = {
+//     id,
+//     title,
+//     url,
+//   };
 
-app.delete('/movies/:id', (req, res) => {
-  const movie = movies.find((item) => item.id === req.params.id);
-  res.send(`Method DELETE has called for tv-shows id= ${movie}`);
-});
+//   console.log(models.movies);
+//   models.movies.push(movie);
+
+//   res.send('New movie was posted successful');
+// });
+
+// app.put('/movies/:id', (req, res) =>
+//   res.send(`Method PUT has called for  movie id= ${req.params.id}`)
+// );
+
+// app.delete('/movies/:id', (req, res) => {
+//   const { id, title } = req.context.models.movies.find((item) => item.id === req.params.id);
+//   req.context.models.movies = [...req.context.models.movies.filter((item) => item.id !== id)];
+//   res.send(`${title} was removed successful.`);
+// });
 
 app.listen(PORT, () => console.log(`Port ${PORT} is being tapped.`));
