@@ -2,7 +2,7 @@ import cors from 'cors';
 import express from 'express';
 import bodyParser from 'body-parser';
 import { PORT } from './config';
-import { models } from './model/model';
+import { models, connectDb } from './model';
 import moviesRoutes from './routes/moviesRoutes';
 import showsRoutes from './routes/showsRoutes';
 
@@ -21,6 +21,10 @@ app.use((req, res, next) => {
 
 app.use('/movies', moviesRoutes);
 app.use('/shows', showsRoutes);
+
+connectDb().then(async () =>
+  app.listen(PORT, () => console.log(`Port ${PORT} is being tapped with DB connection.`))
+);
 
 // app.get('/movies/:id', (req, res) => {
 //   const movie = req.context.models.movies.find((item) => item.id === req.params.id);
@@ -60,4 +64,4 @@ app.use('/shows', showsRoutes);
 //   res.send(`${title} was removed successful.`);
 // });
 
-app.listen(PORT, () => console.log(`Port ${PORT} is being tapped.`));
+// app.listen(PORT, () => console.log(`Port ${PORT} is being tapped.`));
