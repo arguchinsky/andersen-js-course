@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable class-methods-use-this */
-import { EventEmitter, getElementById, BUTTONS, EVENTS } from '../utils';
+import { EventEmitter, getElementById, BUTTONS, EVENTS, createList, createItem } from '../utils';
 
 export class View extends EventEmitter {
   constructor() {
@@ -47,10 +47,23 @@ export class View extends EventEmitter {
   }
 
   showMovies(list) {
-    console.log(list);
+    const itemsCollection = list.map((item) => createItem(item));
+    const listItems = createList();
+
+    listItems.append(...itemsCollection);
+
+    this.movies.querySelector('ul').remove();
+    this.movies.querySelector('.row').prepend(listItems);
   }
 
   showTvShows(list) {
-    console.log(list);
+    const itemsCollection = list.map((item) => createItem(item));
+    const listItems = createList();
+    console.log(itemsCollection);
+
+    listItems.append(...itemsCollection);
+
+    this.shows.querySelector('ul').remove();
+    this.shows.querySelector('.row').prepend(listItems);
   }
 }
