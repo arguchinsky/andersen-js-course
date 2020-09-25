@@ -9,12 +9,16 @@ export class View extends EventEmitter {
     this.moviesList = [];
     this.showsList = [];
 
+    this.getElements();
+    this.addListeners();
+  }
+
+  getElements() {
     this.loadMovies = getElementById(BUTTONS.MOVIES_BTN);
     this.loadShows = getElementById(BUTTONS.SHOWS_BTN);
     this.movies = getElementById('movies');
     this.shows = getElementById('shows');
-
-    this.addListeners();
+    this.description = getElementById('description');
   }
 
   addListeners() {

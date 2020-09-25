@@ -8,7 +8,7 @@ h1, h4 {
 }
 
 a:hover {
-  background-color: rgb(0 123 255);
+  background-color: rgb(0, 123, 255);
   color: white
 }
 
@@ -22,10 +22,29 @@ a:hover {
 
 .list-group-item:hover {
   cursor: pointer;
-  background-color: rgb(0 123 255);
+  background-color: rgb(0, 123, 255);
   color: white
 }
 
 .hide {
   display: none;
+}
+
+.btn{
+  background-color: rgba(0, 123, 255, .5);
+  color: white
+}
+
+.btn:hover{
+  background-color: rgb(0, 123, 255);
+}
+
+.delete {
+  margin: 0;
+  background-color: rgba(255, 0, 0, 0.548);
+}
+
+.delete:hover {
+  cursor: pointer;
+  background-color: red;
 }
