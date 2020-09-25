@@ -1,8 +1,9 @@
+/* eslint-disable no-console */
 import cors from 'cors';
 import express from 'express';
 import bodyParser from 'body-parser';
 import { PORT } from './config';
-import { models, connectDb } from './model';
+import { models } from './model';
 import moviesRoutes from './routes/moviesRoutes';
 import showsRoutes from './routes/showsRoutes';
 
@@ -22,46 +23,8 @@ app.use((req, res, next) => {
 app.use('/movies', moviesRoutes);
 app.use('/shows', showsRoutes);
 
-connectDb().then(async () =>
-  app.listen(PORT, () => console.log(`Port ${PORT} is being tapped with DB connection.`))
-);
-
-// app.get('/movies/:id', (req, res) => {
-//   const movie = req.context.models.movies.find((item) => item.id === req.params.id);
-//   res.send(movie);
-// });
-
-// app.get('/shows/:id', (req, res) => {
-//   const show = req.context.models.shows.find((item) => item.id === req.params.id);
-//   res.send(show);
-// });
-
-// app.get('/movies', (req, res) => res.send(req.context.models.movies));
-
-// app.get('/shows', (req, res) => res.send(req.context.models.shows));
-// app.post('/movies', (req, res) => {
-//   const { id, title, url } = req.body;
-
-//   const movie = {
-//     id,
-//     title,
-//     url,
-//   };
-
-//   console.log(models.movies);
-//   models.movies.push(movie);
-
-//   res.send('New movie was posted successful');
-// });
-
-// app.put('/movies/:id', (req, res) =>
-//   res.send(`Method PUT has called for  movie id= ${req.params.id}`)
+// connectDb().then(async () =>
+//   app.listen(PORT, () => console.log(`Port ${PORT} is being tapped with DB connection.`))
 // );
 
-// app.delete('/movies/:id', (req, res) => {
-//   const { id, title } = req.context.models.movies.find((item) => item.id === req.params.id);
-//   req.context.models.movies = [...req.context.models.movies.filter((item) => item.id !== id)];
-//   res.send(`${title} was removed successful.`);
-// });
-
-// app.listen(PORT, () => console.log(`Port ${PORT} is being tapped.`));
+app.listen(PORT, () => console.log(`Port ${PORT} is being tapped.`));

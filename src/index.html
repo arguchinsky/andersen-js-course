@@ -3,12 +3,94 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="ɡnonymous">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Andersen JS Course</title>
   </head>
   <body>
     <h1>
-      Andersen JS Course
+      My Favorites Movies And Tv-Shows
     </h1>
+    <section class="container">
+      <!-- navigation section -->
+      <ul class="nav nav-pills">
+        <li class="nav-item mr-sm-2">
+          <a class="nav-link" href="#movies" id="loadMovies">Movies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#shows" id="loadShows">Tv-Shows</a>
+        </li>
+        </li>
+      </ul>
+      <!-- movies list section -->
+      <section class="container hide" id="movies">
+        <div class="row">
+          <ul class="list-group col-8">
+            <li class="list-group-item">Item</li>
+            <li class="list-group-item">Item</li>
+            <li class="list-group-item">Item</li>
+            <li class="list-group-item">Item</li>
+            <li class="list-group-item">Item</li>
+          </ul>
+          <form class="form-group col-4">
+            <h4>Add Movie</h4>
+            <label for="title">Title</label>
+            <input class="form-control form-control-sm" type="text" name="title" id="title" placeholder="Title" required>
+
+            <label for="url">Url</label>
+            <input class="form-control form-control-sm" type="text" name="url" id="url" placeholder="Url" required>
+
+            <label for="description">Description</label>
+            <textarea class="form-control form-control-lg" type="text" name="description" id="description" placeholder="Description"></textarea>
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit" id="add">Add</button>
+          </form>
+        </div>
+      </section>
+      <!-- tv-shows list section -->
+      <section class="container hide" id="shows">
+        <div class="row">
+          <ul class="list-group col-8">
+            <li class="list-group-item">Item</li>
+            <li class="list-group-item">Item</li>
+            <li class="list-group-item">Item</li>
+            <li class="list-group-item">Item</li>
+            <li class="list-group-item">Item</li>
+          </ul>
+          <form class="form-group col-4" method="post">
+            <h4>Add Tv-Show</h4>
+            <label for="title">Title</label>
+            <input class="form-control form-control-sm" type="text" name="title" id="title" placeholder="Title" required>
+
+            <label for="url">Url</label>
+            <input class="form-control form-control-sm" type="text" name="url" id="url" placeholder="Url" required>
+
+            <label for="description">Description</label>
+            <textarea class="form-control form-control-lg" type="text" name="description" id="description" placeholder="Description"></textarea>
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit" id="add">Add</button>
+          </form>
+        </div>
+      </section>
+      <!-- description section -->
+      <section class="container hide">
+        <div class="row">
+          <p class="description col-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, minus! Quos, harum nostrum sequi praesentium sint ea quidem quam, voluptate ipsam perferendis similique cupiditate consequatur, rem nam at accusantium culpa?</p>
+          <form class="form-group col-4" method="post">
+            <h4>Edit Form</h4>
+            <label for="title">Title</label>
+            <input class="form-control form-control-sm" type="text" name="title" id="title" placeholder="Title" required>
+
+            <label for="url">Url</label>
+            <input class="form-control form-control-sm" type="text" name="url" id="url" placeholder="Url" required>
+
+            <label for="description">Description</label>
+            <textarea class="form-control form-control-lg" type="text" name="description" id="description" placeholder="Description"></textarea>
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit" id="add">Edit</button>
+          </form>
+        </div>
+      </section>
+    </section>
   </body>
 </html>
