@@ -8,10 +8,11 @@ class Application {
 
     appView.subscribe(EVENTS.GET_MOVIES, this.getMovies.bind(this));
     appView.subscribe(EVENTS.GET_SHOWS, this.getShows.bind(this));
+    appView.subscribe(EVENTS.GET_ITEM, this.getItem.bind(this));
   }
 
-  start() {
-    console.log(this.view);
+  async start() {
+    this.view.handleRoutes();
   }
 
   async getMovies() {
@@ -26,6 +27,15 @@ class Application {
     const showsList = await response.json();
 
     this.view.showTvShows(showsList);
+  }
+
+  async getItem({ type, id }) {
+    const url = `${URLS[type.toUpperCase()]}/${id}`;
+
+    const response = await window.fetch(url);
+    const item = await response.json();
+
+    this.view.showItemDescription(item);
   }
 }
 
