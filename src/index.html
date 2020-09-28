@@ -11,7 +11,7 @@
     <h1>
       My Favorites Movies And Tv-Shows
     </h1>
-    <section class="container">
+    <section class="container main">
       <!-- navigation section -->
       <ul class="nav nav-pills">
         <li class="nav-item mr-sm-2">
@@ -26,7 +26,7 @@
       <section class="container hide" id="movies">
         <div class="row" id="moviesList">
           <ul class="list-group col-8"></ul>
-          <form class="form-group col-4">
+          <form class="form-group col-4" method="POST" id="formMovies">
             <h4>Add Movie</h4>
             <label for="title">Title</label>
             <input class="form-control form-control-sm" type="text" name="title" id="title" placeholder="Title" required>
@@ -34,8 +34,8 @@
             <label for="url">Url</label>
             <input class="form-control form-control-sm" type="text" name="url" id="url" placeholder="Url" required>
 
-            <label for="description">Description</label>
-            <textarea class="form-control form-control-lg" type="text" name="description" id="form-description" placeholder="Description"></textarea>
+            <label for="formMoviesDesc">Description</label>
+            <textarea class="form-control form-control-lg" type="text" name="description" id="formMoviesDesc" placeholder="Description"></textarea>
 
             <button class="btn btn-primary btn-lg btn-block" type="submit" id="add">Add</button>
           </form>
@@ -45,7 +45,7 @@
       <section class="container hide" id="shows">
         <div class="row" id="showsList">
           <ul class="list-group col-8"></ul>
-          <form class="form-group col-4" method="post">
+          <form class="form-group col-4" method="post" id="formShows">
             <h4>Add Tv-Show</h4>
             <label for="title">Title</label>
             <input class="form-control form-control-sm" type="text" name="title" id="title" placeholder="Title" required>
@@ -53,8 +53,8 @@
             <label for="url">Url</label>
             <input class="form-control form-control-sm" type="text" name="url" id="url" placeholder="Url" required>
 
-            <label for="description">Description</label>
-            <textarea class="form-control form-control-lg" type="text" name="description" id="form-description" placeholder="Description"></textarea>
+            <label for="formShowsDesc">Description</label>
+            <textarea class="form-control form-control-lg" type="text" name="description" id="formShowsDesc" placeholder="Description"></textarea>
 
             <button class="btn btn-primary btn-lg btn-block" type="submit" id="add">Add</button>
           </form>
@@ -67,7 +67,7 @@
             <h4>Wait a minute!</h4>
             <p></p>
           </div>
-          <form class="form-group col-4" method="post">
+          <form class="form-group col-4" method="put" id="formDescription">
             <h4>Edit Form</h4>
             <label for="title">Title</label>
             <input class="form-control form-control-sm" type="text" name="title" id="title" placeholder="Title" required>
@@ -75,8 +75,8 @@
             <label for="url">Url</label>
             <input class="form-control form-control-sm" type="text" name="url" id="url" placeholder="Url" required>
 
-            <label for="description">Description</label>
-            <textarea class="form-control form-control-lg" type="text" name="description" id="form-description" placeholder="Description"></textarea>
+            <label for="formDescriptionDesc">Description</label>
+            <textarea class="form-control form-control-lg" type="text" name="description" id="formDescriptionDesc" placeholder="Description"></textarea>
 
             <button class="btn btn-primary btn-lg btn-block" type="submit" id="add">Edit</button>
           </form>

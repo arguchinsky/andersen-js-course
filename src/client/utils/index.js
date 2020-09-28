@@ -1,6 +1,6 @@
-export { getElementById } from './getElementById';
+export { getElementById, getHash, getFormHash, getFormFieldsValues, getUrl } from './getters';
 export { EventEmitter } from './eventEmitter';
-export { URLS, EVENTS, BUTTONS } from './constants';
+export { URLS, EVENTS, BUTTONS, FORMS } from './constants';
 export { createList, createItem, createDescription } from './creators';
 export { firstLetterUpper } from './firstLetterUpper';
-export { getHash } from './getHash';
+export { refreshFormFields } from './refreshFormFields';

@@ -1,6 +1,10 @@
-export function createItem({ id, title, url, description = 'empty' }) {
+function convertTitleToId(title) {
+  return title.toLowerCase().split(' ').join('-');
+}
+
+export function createItem({ title, url, description = 'empty' }) {
   return {
-    id,
+    id: convertTitleToId(title),
     title,
     url,
     description,
