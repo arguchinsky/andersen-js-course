@@ -10,6 +10,7 @@ import {
   getHash,
   getFormFieldsValues,
   refreshFormFields,
+  switchHash,
 } from '../utils';
 
 export class View extends EventEmitter {
@@ -51,10 +52,6 @@ export class View extends EventEmitter {
     this.formShows.addEventListener('submit', this.handleShowsFormSubmit.bind(this));
 
     this.removeButton.addEventListener('click', this.handleRemove.bind(this));
-    // disabled for the test
-
-    // this.moviesList.addEventListener('click', this.handleShowDescription.bind(this));
-    // this.showsList.addEventListener('click', this.handleShowDescription.bind(this));
   }
 
   handleRoutes() {
@@ -158,6 +155,7 @@ export class View extends EventEmitter {
   handleRemove() {
     const { props } = getHash();
 
+    switchHash(props);
     this.emit(EVENTS.REMOVE, props);
   }
 }
