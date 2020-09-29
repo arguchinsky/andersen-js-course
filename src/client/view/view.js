@@ -10,7 +10,6 @@ import {
   getHash,
   getFormFieldsValues,
   refreshFormFields,
-  switchHash,
 } from '../utils';
 
 export class View extends EventEmitter {
@@ -131,6 +130,8 @@ export class View extends EventEmitter {
 
     this.description.classList.remove('hide');
 
+    this.removeButton.setAttribute('href', `#${props.type}`);
+
     this.emit(EVENTS.GET_ITEM, props);
   }
 
@@ -155,7 +156,6 @@ export class View extends EventEmitter {
   handleRemove() {
     const { props } = getHash();
 
-    switchHash(props);
     this.emit(EVENTS.REMOVE, props);
   }
 }
