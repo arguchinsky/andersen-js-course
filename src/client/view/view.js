@@ -8,8 +8,9 @@ import {
   createList,
   createDescription,
   getHash,
-  getFormFieldsValues,
+  getPropsFormFields,
   refreshFormFields,
+  switchHash,
 } from '../utils';
 
 export class View extends EventEmitter {
@@ -49,6 +50,7 @@ export class View extends EventEmitter {
 
     this.formMovies.addEventListener('submit', this.handleMoviesFormSubmit.bind(this));
     this.formShows.addEventListener('submit', this.handleShowsFormSubmit.bind(this));
+    this.formDescription.addEventListener('submit', this.handleEditFormSubmit.bind(this));
 
     this.removeButton.addEventListener('click', this.handleRemove.bind(this));
   }
@@ -130,8 +132,6 @@ export class View extends EventEmitter {
 
     this.description.classList.remove('hide');
 
-    this.removeButton.setAttribute('href', `#${props.type}`);
-
     this.emit(EVENTS.GET_ITEM, props);
   }
 
@@ -139,7 +139,7 @@ export class View extends EventEmitter {
 
   handleMoviesFormSubmit(event) {
     event.preventDefault();
-    const props = getFormFieldsValues(this.formMovies);
+    const props = getPropsFormFields(this.formMovies);
 
     refreshFormFields(this.formMovies);
     this.emit(EVENTS.ADD_MOVIE, props);
@@ -147,15 +147,28 @@ export class View extends EventEmitter {
 
   handleShowsFormSubmit(event) {
     event.preventDefault();
-    const props = getFormFieldsValues(this.formShows);
+    const props = getPropsFormFields(this.formShows);
 
     refreshFormFields(this.formShows);
     this.emit(EVENTS.ADD_SHOW, props);
   }
 
-  handleRemove() {
+  handleEditFormSubmit(event) {
+    event.preventDefault();
+
+    const data = getPropsFormFields(this.formDescription);
+    data.props = getHash().props;
+    refreshFormFields(this.formDescription);
+    this.emit(EVENTS.EDIT, data);
+  }
+
+  handleRemove(event) {
+    event.preventDefault();
+
     const { props } = getHash();
 
     this.emit(EVENTS.REMOVE, props);
+
+    switchHash(props);
   }
 }

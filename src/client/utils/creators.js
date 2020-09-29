@@ -1,11 +1,11 @@
-export function createItem({ title, id }, type) {
+export function createItem({ title, _id }, type) {
   const item = document.createElement('li');
   const link = document.createElement('a');
 
   item.classList.add('list-group-item');
 
   link.classList.add('nav-link');
-  link.id = id;
+  link.id = _id;
   link.setAttribute('href', `#description/${type}/${link.id}`);
   link.textContent = title.slice(0, 1).toUpperCase() + title.slice(1);
 

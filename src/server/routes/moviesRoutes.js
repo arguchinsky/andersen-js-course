@@ -1,26 +1,53 @@
 import { Router } from 'express';
-import { createItem, removeItem } from '../utils';
 
 const router = Router();
 
 router
   .route('')
-  .get((req, res) => res.send(req.context.models.movies))
-  .post((req, res) => {
-    const movie = createItem(req.body);
-    req.context.models.movies.push(movie);
-    res.send(req.context.models.movies);
+  .get(async (req, res) => {
+    try {
+      res.send(await req.context.models.Movies.find());
+    } catch ({ message }) {
+      res.send(message);
+    }
+  })
+  .post(async (req, res) => {
+    try {
+      const movie = new req.context.models.Movies(req.body);
+      await movie.save();
+      res.send(await req.context.models.Movies.find());
+    } catch ({ message }) {
+      res.send(message);
+    }
   });
 
 router
   .route('/:id')
-  .get((req, res) => {
-    const movie = req.context.models.movies.find((item) => item.id === req.params.id);
-    res.send(movie);
+  .get(async (req, res) => {
+    try {
+      res.send(await req.context.models.Movies.findById(req.params.id));
+    } catch ({ message }) {
+      res.send(message);
+    }
   })
-  .delete((req, res) => {
-    req.context.models.movies = [...removeItem(req.context.models.movies, req.params.id)];
-    res.send(req.context.models.movies);
+  .patch(async (req, res) => {
+    try {
+      res.send(
+        await req.context.models.Movies.findByIdAndUpdate(req.params.id, req.body, {
+          new: true,
+        })
+      );
+    } catch ({ message }) {
+      res.send(message);
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      await req.context.models.Movies.findByIdAndRemove(req.params.id);
+      res.send(await req.context.models.Movies.find());
+    } catch ({ message }) {
+      res.send(message);
+    }
   });
 
 module.exports = router;

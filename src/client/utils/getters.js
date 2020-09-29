@@ -19,7 +19,7 @@ export function getHash() {
   };
 }
 
-export function getFormFieldsValues(form) {
+export function getPropsFormFields(form) {
   const [title, url, formDesc] = Object.values(form.elements).map((item) => item.value);
 
   return {
@@ -31,10 +31,4 @@ export function getFormFieldsValues(form) {
 
 export function getUrl({ type, id }) {
   return `${URLS[type.toUpperCase()]}/${id}`;
-}
-
-// should delete
-export function getFormHash() {
-  const hash = window.location.hash.split('#');
-  console.log(hash);
 }

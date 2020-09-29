@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { EVENTS, URLS, getUrl } from '../utils';
 import { View } from '../view/view';
 
@@ -6,12 +5,17 @@ class Application {
   constructor(appView) {
     this.view = appView;
 
-    appView.subscribe(EVENTS.GET_MOVIES, this.getMovies.bind(this));
-    appView.subscribe(EVENTS.GET_SHOWS, this.getShows.bind(this));
-    appView.subscribe(EVENTS.GET_ITEM, this.getItem.bind(this));
-    appView.subscribe(EVENTS.ADD_MOVIE, this.addMovie.bind(this));
-    appView.subscribe(EVENTS.ADD_SHOW, this.addShow.bind(this));
-    appView.subscribe(EVENTS.REMOVE, this.removeItem.bind(this));
+    this.subscribes(appView);
+  }
+
+  subscribes(view) {
+    view.subscribe(EVENTS.GET_MOVIES, this.getMovies.bind(this));
+    view.subscribe(EVENTS.GET_SHOWS, this.getShows.bind(this));
+    view.subscribe(EVENTS.GET_ITEM, this.getItem.bind(this));
+    view.subscribe(EVENTS.ADD_MOVIE, this.addMovie.bind(this));
+    view.subscribe(EVENTS.ADD_SHOW, this.addShow.bind(this));
+    view.subscribe(EVENTS.REMOVE, this.removeItem.bind(this));
+    view.subscribe(EVENTS.EDIT, this.editItem.bind(this));
   }
 
   async start() {
@@ -73,7 +77,23 @@ class Application {
     }
   }
 
-  // eslint-disable-next-line class-methods-use-this
+  async editItem(item) {
+    const url = getUrl(item.props);
+    const editedItem = JSON.stringify(item);
+    try {
+      const response = await window.fetch(url, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: editedItem,
+      });
+      this.view.showItemDescription(await response.json());
+    } catch ({ message }) {
+      throw new Error(message);
+    }
+  }
+
   async removeItem(props) {
     try {
       const url = getUrl(props);

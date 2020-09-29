@@ -3,9 +3,10 @@ import cors from 'cors';
 import express from 'express';
 import bodyParser from 'body-parser';
 import { PORT } from './config';
-import { models } from './model';
 import moviesRoutes from './routes/moviesRoutes';
 import showsRoutes from './routes/showsRoutes';
+import { models } from './model';
+import { dbConnect } from './database';
 
 const app = express();
 
@@ -23,8 +24,6 @@ app.use((req, res, next) => {
 app.use('/movies', moviesRoutes);
 app.use('/shows', showsRoutes);
 
-// connectDb().then(async () =>
-//   app.listen(PORT, () => console.log(`Port ${PORT} is being tapped with DB connection.`))
-// );
-
-app.listen(PORT, () => console.log(`Port ${PORT} is being tapped.`));
+dbConnect().then(async () =>
+  app.listen(PORT, () => console.log(`The database has been connected.`))
+);
