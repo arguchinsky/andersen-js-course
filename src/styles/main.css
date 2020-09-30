@@ -20,6 +20,8 @@ a:hover {
 }
 
 .nav{
+  justify-content: center;
+  
   margin: 10px;
   padding: 10px;
 }
