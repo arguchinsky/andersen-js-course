@@ -18,8 +18,24 @@ class Application {
     subscriber.subscribe(EVENTS.EDIT, this.editItem.bind(this));
   }
 
-  async start() {
+  start() {
     this.view.handleRoutes();
+  }
+
+  // helpers
+  refreshList(type) {
+    switch (type) {
+      case 'movies': {
+        this.view.handleShowMovies();
+        break;
+      }
+      case 'shows': {
+        this.view.handleShowShows();
+        break;
+      }
+      default:
+        break;
+    }
   }
 
   async getMovies() {
@@ -102,18 +118,7 @@ class Application {
         method: 'DELETE',
       });
 
-      switch (props.type) {
-        case 'movies': {
-          this.view.handleShowMovies();
-          break;
-        }
-        case 'shows': {
-          this.view.handleShowShows();
-          break;
-        }
-        default:
-          break;
-      }
+      this.refreshList(props.type);
     } catch ({ message }) {
       throw new Error(message);
     }
