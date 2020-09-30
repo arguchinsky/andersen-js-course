@@ -1,4 +1,4 @@
-export function createItem({ title, _id }, type) {
+function createItem({ title, _id }, type) {
   const item = document.createElement('li');
   const link = document.createElement('a');
 
