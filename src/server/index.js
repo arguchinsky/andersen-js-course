@@ -3,6 +3,7 @@ import cors from 'cors';
 import express from 'express';
 import bodyParser from 'body-parser';
 import { PORT } from './config';
+import { getTime } from './utils';
 import moviesRoutes from './routes/moviesRoutes';
 import showsRoutes from './routes/showsRoutes';
 import { models } from './model';
@@ -25,5 +26,5 @@ app.use('/movies', moviesRoutes);
 app.use('/shows', showsRoutes);
 
 dbConnect().then(async () =>
-  app.listen(PORT, () => console.log(`The database has been connected.`))
+  app.listen(PORT, () => console.log(`[${getTime()}] The database is connected.`))
 );

@@ -31,8 +31,7 @@ export function createDescription({ title, description }) {
 
   viewTitle.textContent = title;
 
-  viewDescription.textContent =
-    description !== 'empty' ? description : `Sorry description is empty`;
+  viewDescription.textContent = description !== '' ? description : `Sorry description is empty`;
 
   return [viewTitle, viewDescription];
 }
