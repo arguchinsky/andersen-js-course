@@ -1,4 +1,3 @@
-/* eslint-disable class-methods-use-this */
 import {
   EventEmitter,
   getElementById,
@@ -13,7 +12,7 @@ import {
   switchHash,
 } from '../utils';
 
-export class View extends EventEmitter {
+class View extends EventEmitter {
   constructor() {
     super();
 
@@ -55,8 +54,63 @@ export class View extends EventEmitter {
     this.removeButton.addEventListener('click', this.handleRemove.bind(this));
   }
 
+  // helpers
+
+  setActiveMoviesButton() {
+    this.loadMovies.classList.add('active');
+    this.loadShows.classList.remove('active');
+  }
+
+  setActiveShowsButton() {
+    this.loadShows.classList.add('active');
+    this.loadMovies.classList.remove('active');
+  }
+
+  setActiveMoviesList() {
+    this.movies.classList.remove('hide');
+
+    this.shows.classList.add('hide');
+    this.description.classList.add('hide');
+
+    this.setActiveMoviesButton();
+  }
+
+  setActiveShowsList() {
+    this.shows.classList.remove('hide');
+
+    this.movies.classList.add('hide');
+    this.description.classList.add('hide');
+
+    this.setActiveShowsButton();
+  }
+
+  setActiveDescription(type) {
+    this.shows.classList.add('hide');
+    this.movies.classList.add('hide');
+
+    this.description.classList.remove('hide');
+
+    switch (type) {
+      case 'movies': {
+        this.setActiveMoviesButton();
+        break;
+      }
+      case 'shows': {
+        this.setActiveShowsButton();
+        break;
+      }
+      default:
+        break;
+    }
+  }
+
+  // client routing
   handleRoutes() {
     const hash = getHash();
+
+    refreshFormFields(this.formMovies);
+    refreshFormFields(this.formShows);
+    refreshFormFields(this.formDescription);
 
     switch (hash.href) {
       case 'movies': {
@@ -101,23 +155,13 @@ export class View extends EventEmitter {
   // handle methods
 
   handleShowMovies() {
-    this.movies.classList.remove('hide');
-    this.shows.classList.add('hide');
-    this.description.classList.add('hide');
-
-    this.loadMovies.classList.add('active');
-    this.loadShows.classList.remove('active');
+    this.setActiveMoviesList();
 
     this.emit(EVENTS.GET_MOVIES);
   }
 
   handleShowShows() {
-    this.shows.classList.remove('hide');
-    this.movies.classList.add('hide');
-    this.description.classList.add('hide');
-
-    this.loadShows.classList.add('active');
-    this.loadMovies.classList.remove('active');
+    this.setActiveShowsList();
 
     this.emit(EVENTS.GET_SHOWS);
   }
@@ -125,12 +169,7 @@ export class View extends EventEmitter {
   handleShowDescription() {
     const { props } = getHash();
 
-    this.shows.classList.add('hide');
-    this.movies.classList.add('hide');
-    this.loadShows.classList.remove('active');
-    this.loadMovies.classList.remove('active');
-
-    this.description.classList.remove('hide');
+    this.setActiveDescription(props.type);
 
     this.emit(EVENTS.GET_ITEM, props);
   }
@@ -158,6 +197,7 @@ export class View extends EventEmitter {
 
     const data = getPropsFormFields(this.formDescription);
     data.props = getHash().props;
+
     refreshFormFields(this.formDescription);
     this.emit(EVENTS.EDIT, data);
   }
@@ -172,3 +212,5 @@ export class View extends EventEmitter {
     switchHash(props);
   }
 }
+
+export const view = new View();

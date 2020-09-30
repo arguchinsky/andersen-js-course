@@ -1,21 +1,21 @@
 import { EVENTS, URLS, getUrl } from '../utils';
-import { View } from '../view/view';
+import { view } from '../view/view';
 
 class Application {
   constructor(appView) {
     this.view = appView;
 
-    this.subscribes(appView);
+    this.subscriptions(appView);
   }
 
-  subscribes(view) {
-    view.subscribe(EVENTS.GET_MOVIES, this.getMovies.bind(this));
-    view.subscribe(EVENTS.GET_SHOWS, this.getShows.bind(this));
-    view.subscribe(EVENTS.GET_ITEM, this.getItem.bind(this));
-    view.subscribe(EVENTS.ADD_MOVIE, this.addMovie.bind(this));
-    view.subscribe(EVENTS.ADD_SHOW, this.addShow.bind(this));
-    view.subscribe(EVENTS.REMOVE, this.removeItem.bind(this));
-    view.subscribe(EVENTS.EDIT, this.editItem.bind(this));
+  subscriptions(subscriber) {
+    subscriber.subscribe(EVENTS.GET_MOVIES, this.getMovies.bind(this));
+    subscriber.subscribe(EVENTS.GET_SHOWS, this.getShows.bind(this));
+    subscriber.subscribe(EVENTS.GET_ITEM, this.getItem.bind(this));
+    subscriber.subscribe(EVENTS.ADD_MOVIE, this.addMovie.bind(this));
+    subscriber.subscribe(EVENTS.ADD_SHOW, this.addShow.bind(this));
+    subscriber.subscribe(EVENTS.REMOVE, this.removeItem.bind(this));
+    subscriber.subscribe(EVENTS.EDIT, this.editItem.bind(this));
   }
 
   async start() {
@@ -120,4 +120,4 @@ class Application {
   }
 }
 
-export const application = new Application(new View());
+export const application = new Application(view);
