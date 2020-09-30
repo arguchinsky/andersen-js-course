@@ -11,5 +11,10 @@
 ## Подготовка к запуску
 * Находясь в папке с проектом выполните в консоле команду `yarn`. Эта команда установит все необходимые пакеты зависимостей.
 
-## Запуск приложения
-* Выполните команду `yarn start`. После этого у вас должен подняться локальный сервер, открыться новая вкладка в браузере, и вы можете приступать к работе.
+## Для запуска приложения необходимо использовать следующие команды командной строки:
+1. yarn start-server (или npm start-server) для запуска сервера.
+2. yarn start-client (или npm start-client) для запуска клиента.
+
+### To launch the application, you should use the command's line following commands:
+1. yarn start-server (or npm start-server) to launch the server.
+2. yarn start-client (or npm start-client) to launch the client.
