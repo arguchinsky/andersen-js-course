@@ -1,4 +1,5 @@
-import { EVENTS, URLS, getUrl } from '../utils';
+import { EVENTS, URLS } from '../constants';
+import { getUrl } from '../utils';
 import { view } from '../view/view';
 
 class Application {

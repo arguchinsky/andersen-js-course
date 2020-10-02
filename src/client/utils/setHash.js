@@ -1,3 +1,3 @@
-export function switchHash({ type }) {
+export function setHash({ type }) {
   window.location.hash = `#${type}`;
 }

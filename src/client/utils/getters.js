@@ -1,4 +1,4 @@
-import { URLS } from './constants';
+import { URLS } from '../constants';
 
 export function getElementById(id) {
   return document.getElementById(id);

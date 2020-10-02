@@ -1,15 +1,13 @@
+import { EVENTS, BUTTONS, FORMS } from '../constants';
 import {
   EventEmitter,
   getElementById,
-  BUTTONS,
-  EVENTS,
-  FORMS,
   createList,
   createDescription,
   getHash,
   getPropsFormFields,
-  refreshFormFields,
-  switchHash,
+  clearFormFields,
+  setHash,
 } from '../utils';
 
 class View extends EventEmitter {
@@ -108,9 +106,9 @@ class View extends EventEmitter {
   handleRoutes() {
     const hash = getHash();
 
-    refreshFormFields(this.formMovies);
-    refreshFormFields(this.formShows);
-    refreshFormFields(this.formDescription);
+    clearFormFields(this.formMovies);
+    clearFormFields(this.formShows);
+    clearFormFields(this.formDescription);
 
     switch (hash.href) {
       case 'movies': {
@@ -180,7 +178,7 @@ class View extends EventEmitter {
     event.preventDefault();
     const props = getPropsFormFields(this.formMovies);
 
-    refreshFormFields(this.formMovies);
+    clearFormFields(this.formMovies);
     this.emit(EVENTS.ADD_MOVIE, props);
   }
 
@@ -188,7 +186,7 @@ class View extends EventEmitter {
     event.preventDefault();
     const props = getPropsFormFields(this.formShows);
 
-    refreshFormFields(this.formShows);
+    clearFormFields(this.formShows);
     this.emit(EVENTS.ADD_SHOW, props);
   }
 
@@ -198,7 +196,7 @@ class View extends EventEmitter {
     const data = getPropsFormFields(this.formDescription);
     data.props = getHash().props;
 
-    refreshFormFields(this.formDescription);
+    clearFormFields(this.formDescription);
     this.emit(EVENTS.EDIT, data);
   }
 
@@ -209,7 +207,7 @@ class View extends EventEmitter {
 
     this.emit(EVENTS.REMOVE, props);
 
-    switchHash(props);
+    setHash(props);
   }
 }
 
