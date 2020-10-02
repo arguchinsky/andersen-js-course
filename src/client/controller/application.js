@@ -1,10 +1,12 @@
 import { EVENTS, URLS } from '../constants';
 import { getUrl } from '../utils';
+import { request } from '../request/request';
 import { view } from '../view/view';
 
 class Application {
-  constructor(appView) {
+  constructor(appView, requestService) {
     this.view = appView;
+    this.request = requestService;
 
     this.subscriptions(appView);
   }
@@ -40,39 +42,29 @@ class Application {
   }
 
   async getMovies() {
-    const response = await window.fetch(URLS.MOVIES);
-    const moviesList = await response.json();
+    const data = await this.request.get(URLS.MOVIES);
 
-    this.view.showMovies(moviesList);
+    this.view.showMovies(data);
   }
 
   async getShows() {
-    const response = await window.fetch(URLS.SHOWS);
-    const showsList = await response.json();
+    const data = await this.request.get(URLS.SHOWS);
 
-    this.view.showTvShows(showsList);
+    this.view.showTvShows(data);
   }
 
   async getItem(props) {
     const url = getUrl(props);
 
-    const response = await window.fetch(url);
-    const item = await response.json();
+    const data = await this.request.get(url);
 
-    this.view.showItemDescription(item);
+    this.view.showItemDescription(data);
   }
 
   async addMovie(props) {
     try {
-      const response = await window.fetch(URLS.MOVIES, {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify(props),
-      });
-      const movies = await response.json();
-      this.view.showMovies(movies);
+      const data = await this.request.post(URLS.MOVIES, props);
+      this.view.showMovies(data);
     } catch ({ message }) {
       throw new Error(message);
     }
@@ -80,15 +72,8 @@ class Application {
 
   async addShow(props) {
     try {
-      const response = await window.fetch(URLS.SHOWS, {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify(props),
-      });
-      const movies = await response.json();
-      this.view.showTvShows(movies);
+      const data = await this.request.post(URLS.SHOWS, props);
+      this.view.showTvShows(data);
     } catch ({ message }) {
       throw new Error(message);
     }
@@ -96,34 +81,24 @@ class Application {
 
   async editItem(item) {
     const url = getUrl(item.props);
-    const editedItem = JSON.stringify(item);
     try {
-      const response = await window.fetch(url, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: editedItem,
-      });
-      this.view.showItemDescription(await response.json());
+      const data = await this.request.edit(url, item);
+      this.view.showItemDescription(data);
     } catch ({ message }) {
       throw new Error(message);
     }
   }
 
-  async removeItem(props) {
+  async removeItem(item) {
     try {
-      const url = getUrl(props);
+      const url = getUrl(item);
 
-      await window.fetch(url, {
-        method: 'DELETE',
-      });
-
-      this.refreshList(props.type);
+      this.request.delete(url);
+      this.refreshList(item.type);
     } catch ({ message }) {
       throw new Error(message);
     }
   }
 }
 
-export const application = new Application(view);
+export const application = new Application(view, request);
