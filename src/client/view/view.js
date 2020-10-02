@@ -40,8 +40,6 @@ class View extends EventEmitter {
   }
 
   addListeners() {
-    window.addEventListener('hashchange', this.handleRoutes.bind(this));
-
     this.loadMovies.addEventListener('click', this.handleShowMovies.bind(this));
     this.loadShows.addEventListener('click', this.handleShowShows.bind(this));
 
@@ -99,33 +97,6 @@ class View extends EventEmitter {
       }
       default:
         break;
-    }
-  }
-
-  // client routing
-  handleRoutes() {
-    const hash = getHash();
-
-    clearFormFields(this.formMovies);
-    clearFormFields(this.formShows);
-    clearFormFields(this.formDescription);
-
-    switch (hash.href) {
-      case 'movies': {
-        this.handleShowMovies();
-        break;
-      }
-      case 'shows': {
-        this.handleShowShows();
-        break;
-      }
-      case 'description': {
-        this.handleShowDescription();
-        break;
-      }
-      default: {
-        break;
-      }
     }
   }
 

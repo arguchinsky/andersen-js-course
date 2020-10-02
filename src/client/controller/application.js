@@ -1,12 +1,14 @@
 import { EVENTS, URLS } from '../constants';
 import { getUrl } from '../utils';
 import { request } from '../request/request';
+import { router } from '../router/router';
 import { view } from '../view/view';
 
 class Application {
-  constructor(appView, requestService) {
+  constructor(appView, requestService, appRouter) {
     this.view = appView;
     this.request = requestService;
+    this.router = appRouter;
 
     this.subscriptions(appView);
   }
@@ -22,7 +24,7 @@ class Application {
   }
 
   start() {
-    this.view.handleRoutes();
+    this.router.start();
   }
 
   // helpers
@@ -101,4 +103,4 @@ class Application {
   }
 }
 
-export const application = new Application(view, request);
+export const application = new Application(view, request, router);
