@@ -9,6 +9,7 @@ class Router {
 
   start() {
     window.addEventListener('hashchange', this.handleRoutes.bind(this));
+    this.handleRoutes();
   }
 
   handleRoutes() {

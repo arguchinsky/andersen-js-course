@@ -13,6 +13,10 @@ a:hover {
   color: white
 }
 
+p {
+  word-break: break-word;
+}
+
 .main {
   border-radius: 10px;
 

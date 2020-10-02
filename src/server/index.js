@@ -3,10 +3,10 @@ import cors from 'cors';
 import express from 'express';
 import { PORT } from './config';
 import { getTime } from './utils';
-import moviesRoutes from './routes/moviesRoutes';
-import showsRoutes from './routes/showsRoutes';
-import { models } from './model';
-import { dbConnect } from './database';
+import moviesRouters from './routers/moviesRouters';
+import showsRouters from './routers/showsRouters';
+import { models } from './model/models';
+import { dbConnect } from './database/dbConnect';
 
 const app = express();
 
@@ -21,8 +21,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/movies', moviesRoutes);
-app.use('/shows', showsRoutes);
+app.use('/movies', moviesRouters);
+app.use('/shows', showsRouters);
 
 dbConnect().then(async () =>
   app.listen(PORT, () => console.log(`[${getTime()}] The database is connected.`))
