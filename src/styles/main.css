@@ -1,8 +1,81 @@
 body {
   margin: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-image: url('../client/image/bg.webp');
 }
 
-h1 {
+h1, h4 {
   text-align: center;
+}
+
+a:hover {
+  background-color: rgb(0, 123, 255);
+  color: white
+}
+
+p {
+  word-break: break-word;
+}
+
+.main {
+  border-radius: 10px;
+
+  background-color: rgba(255, 255, 255, 0.541);
+}
+
+.nav{
+  justify-content: center;
+  
+  margin: 10px;
+  padding: 10px;
+}
+
+.nav-link{
+  text-align: center;
+  height: 100%;
+}
+
+.textarea {
+  font-size: small;
+}
+
+.form-group>.btn {
+  margin-top: 10px;
+}
+
+.list-group {
+  margin-bottom: 10px;
+}
+
+.list-group-item {
+  margin: 5px;
+  padding: 0;
+}
+
+.list-group-item:hover {
+  cursor: pointer;
+  background-color: rgb(0, 123, 255);
+}
+
+.hide {
+  display: none;
+}
+
+.btn{
+  background-color: rgba(0, 123, 255, .5);
+  color: white
+}
+
+.btn:hover{
+  background-color: rgb(0, 123, 255);
+}
+
+.delete {
+  margin: 10px 0;
+  background-color: rgba(255, 0, 0, 0.548);
+}
+
+.delete:hover {
+  cursor: pointer;
+  background-color: red;
 }
